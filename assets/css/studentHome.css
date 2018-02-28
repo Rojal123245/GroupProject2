@@ -1,0 +1,39 @@
+.progress{
+  width: 100px ;margin-left: 20px;
+}
+.stBody{
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+}
+div.smallDiv{
+  margin:0 10px;
+  width:40%;
+  height:auto;
+  background-color:#4e3;
+  text-align:center;
+}
+div.announcement, div.events{
+  margin:0 10px;
+  width:30%;
+  height:auto;
+  background-color:#4e3;
+}
+.modulesInfo{
+  width: 150px;
+  height: 225px;
+  text-align: center;
+  padding: 5px;
+  margin: auto;
+  box-shadow: 2px 5px 5px 2px #454;
+}
+.modulesInfo>a>img{
+  width: 100%;
+}
+.row table, th, td{
+  margin-left: 30px; 
+  border: 2px solid #fefefe;
+}
+th, td{
+  padding: 5px;
+}

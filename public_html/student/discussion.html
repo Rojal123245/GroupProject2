@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Discussion forum</title>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/module.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body id="top">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">LOGO </a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">User <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li role="presentation" class="dropdown-header">My Sites</li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a href="#">First Item</a></li>
+                                <li role="presentation"><a href="#">Second Item</a></li>
+                                <li role="presentation"><a href="#">Third Item</a></li>
+                            </ul>
+                        </li>
+                        <li><a href=""><i class="fa fa-power-off" style="font-size: 20px;"></i></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active" role="presentation"><a href="#">Home</a></li>
+                        <li role="presentation"><a href="#">Help</a></li>
+                        <li role="presentation"><a href="#">Learning Development</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li><a href="database.html">Overview </a></li>
+                <li><a href="module.html">Module Content</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Assessment <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation"><a href="info.html">Assessment Information</a></li>
+                        <li role="presentation"><a href="submit.html">Submit Your Work</a></li>
+                        <li role="presentation"><a href="#">Feedback and Grades</a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="discussion.html">Q&amp;A </a></li>
+                <li><a href="announcement.html">Announcements </a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="btn btn-primary" href="#askForm">Ask question?</a>
+                            <div class="right-search">
+                                <div id="search" class="searchClass">
+                                    <a href="javascript:void(0)" onclick="closeNav()">&times;</a>
+                                    <input type="text" placeholder="Search Question...">
+                                </div>
+                                <a class="btn btn-info fa fa-search" onclick="appear()"></a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel">
+                                <div class="panel-body" id="qs">
+                                    <a href="#">What is meant by tuples?</a>
+                                </div>
+                                <div class="panel-body" id="qs">
+                                    <a href="#">What are the essentials component of schema?</a>
+                                </div>
+                                <div class="panel-body" id="qs">
+                                    <a href="#">Meaning of ERD and how is data stored on relational database?</a>
+                            </div>
+                            <div class="panel">
+                                <form method="POST" id="askForm">
+                                    <input type="text" name="question" placeholder="Enter your question?" class="form-control">
+                                    <input type="submit" name="submit" value="Post" class="btn btn-success">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript">
+            function appear() {
+                var a = document.getElementById("search");
+                a.style.width = "200px";
+            }
+            function closeNav() {
+                document.getElementById("search").style.width = "0";
+            }
+        </script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>

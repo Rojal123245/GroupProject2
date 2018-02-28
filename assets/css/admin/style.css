@@ -1,0 +1,31 @@
+*{
+	margin: 0;padding: 0;
+}
+h1, h2, h3, h4, h5, h6{
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+	color: #eee; 
+}
+.left{
+	background: #C7CBD1;
+}
+.right{
+	background: #C7CBE4;
+	padding: 5%;
+}
+
+li>a{
+	font-size: 20px;
+	font-weight: bold;
+}
+.collapse>a{
+	font-size: 15px;
+	padding: 10%;
+	color: #e9e9e9;
+	font-weight: bold;
+}
+
+table, tr, td, th{
+	border: 3px groove #222;
+}
