@@ -37,6 +37,19 @@
 			'content' => contentLoadingFunction('../../template/admin/viewCourse.php', [])
 		];
 	}
+	else if('a'.sha1("Personal Tutor Management") == $table){
+		$templateVars = [
+			'title' => "Add Personal Tutor",
+			'content' => contentLoadingFunction('../../template/admin/addPATForm.php', [])
+		];	
+	}
+	else if('v'.sha1("Personal Tutor Management") == $table){
+		$templateVars = [
+			'title' => "View Personal Tutor",
+			'content' => contentLoadingFunction('../../template/admin/viewCourse.php', [])
+		];
+	}
+	
 	$html = contentLoadingFunction('../../template/admin/admin-layout.php', $templateVars);
 	echo $html;
 ?>

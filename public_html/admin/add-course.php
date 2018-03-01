@@ -1,7 +1,7 @@
 <?php 
-	$title = "Thanks";
 	require '../../databaseConnect/connectSQL.php';
 	if (isset($_POST['submit'])) {
+		$title = "Thanks";
 		require '../../classes/databaseQuery.php';
 		$courseObj = new QueryDatabase($pdo, 'course');
 		unset($_POST['submit']);
@@ -11,6 +11,7 @@
 		
 	}
 	else{
+		$title = "Error";
 		$content = "Few Errors";
 	}
 	require '../../template/admin/admin-layout.php';
