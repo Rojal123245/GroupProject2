@@ -46,10 +46,22 @@
 	else if('v'.sha1("Personal Tutor Management") == $table){
 		$templateVars = [
 			'title' => "View Personal Tutor",
-			'content' => contentLoadingFunction('../../template/admin/viewCourse.php', [])
+			'content' => contentLoadingFunction('../../template/admin/viewPAT.php', [])
 		];
 	}
-	
+	else if('a'.sha1("Report") == $table){
+		$templateVars = [
+			'title' => "Create Report",
+			'content' => contentLoadingFunction('../../template/admin/createReport.php', [])
+		];	
+	}
+	else if('v'.sha1("Report") == $table){
+		$templateVars = [
+			'title' => "View Report",
+			'content' => contentLoadingFunction('../../template/admin/viewReport.php', [])
+		];
+	}
+
 	$html = contentLoadingFunction('../../template/admin/admin-layout.php', $templateVars);
 	echo $html;
 ?>
