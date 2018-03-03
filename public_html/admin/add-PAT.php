@@ -1,7 +1,5 @@
 <?php 
-	require '../../databaseConnect/connectSQL.php';
 	if (isset($_POST['submit'])) {
-		require '../../classes/databaseQuery.php';
 		$staffObj = new QueryDatabase($pdo, 'staff');
 		unset($_POST['submit']);
 		$record = $_POST;

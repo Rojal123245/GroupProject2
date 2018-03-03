@@ -1,4 +1,7 @@
 <?php 
+	require '../../databaseConnect/connectSQL.php';
+	require '../../classes/databaseQuery.php';
+	require '../../classes/table-generate-function.php';
 	$table = $_GET['t'];
 	require '../../functions/load-Template-Function.php';
 	if('a'.sha1("Student") == $table){

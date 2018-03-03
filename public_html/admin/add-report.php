@@ -1,8 +1,6 @@
 <?php 
-	require '../../databaseConnect/connectSQL.php';
 	if (isset($_POST['submit'])) {
 		$title = "Successful";
-		require '../../classes/databaseQuery.php';
 		$reportObj = new QueryDatabase($pdo, 'report');
 		unset($_POST['submit']);
 		$record = $_POST;
