@@ -1,10 +1,18 @@
 <?php 
+	require '../../classes/databaseQuery.php';
+	require '../../databaseConnect/connectSQL.php';
 	if (isset($_POST['submit'])) {
 		$title = "Thanks";
-		$studentObj = new QueryDatabase($pdo, 'staff');
+		$staffObj = new QueryDatabase($pdo, 'staff');
 		unset($_POST['submit']);
 		$record = $_POST;
-		$result = $studentObj->saveQuery($record);
+		if (isset($_GET['p'])) {
+			$pk = $_GET['p'];
+			$result = $staffObj->update($record, $pk);
+		}
+		else{
+			$result = $staffObj->saveQuery($record);
+		}
 		$content = "<h3>Record had been added</h3>";
 		
 	}

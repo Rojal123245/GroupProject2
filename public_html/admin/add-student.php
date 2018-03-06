@@ -8,7 +8,6 @@
 		unset($_POST['submit']);
 		$record = $_POST;
 		if (isset($_GET['p'])) {
-			print_r($record);
 			$pk = $_GET['p'];
 			$result = $studentObj->update($record, $pk);
 		}
