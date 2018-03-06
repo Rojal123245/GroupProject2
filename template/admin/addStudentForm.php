@@ -2,6 +2,7 @@
     <h2 class="text-center">Add Student Record</h2>
     <?php 
         $formData = [["text", "studentFirstName", "First Name"], ["text", "studentMiddleName", "Middle Name"], ["text", "studentSurName", "Last Name"], ["email", "email", "Email"], ["text", "addressTermTime", "Term Time Address"], ["text", "addressNonTT", "Non Term Time Address"], ["text", "phone", "Phone Number"], ["number", "currentCoursCode", "Course Code"], ["text", "entryQualification", "Qualification"], ["text", "status", "Status"], ["text", "dormacyReason", "Dormacy Reason"]];
+        $getRow = [];
         require '../../functions/form-generate-function.php';
     ?>
     <div class="form-group">

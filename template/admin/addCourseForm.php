@@ -2,6 +2,7 @@
     <h2 class="text-center">Add Course</h2>
     <?php 
         $formData = [["text", "courseName", "Course Name"]];
+        $getRow = [];
         require '../../functions/form-generate-function.php';
     ?>
     <div>

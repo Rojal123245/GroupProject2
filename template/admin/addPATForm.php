@@ -2,6 +2,7 @@
     <h2 class="text-center">Add Personal Tutor</h2>
     <?php 
         $formData = [["text", "tutorfName", "Tutor First Name"], ["text", "tutorlName", "Tutor Surname"]];
+        $getRow = [];
         require '../../functions/form-generate-function.php';
     ?>
     <div>

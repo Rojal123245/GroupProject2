@@ -2,6 +2,7 @@
     <h2 class="text-center">Add Staff Record</h2>
     <?php 
         $formData = [["text", "staffFirstName", "First Name"], ["text", "staffMiddleName", "Middle Name"], ["text", "staffSurName", "Last Name"], ["email", "email", "Email"], ["text", "address", "Address"], ["text", "phone", "Phone Number"], ["text", "role", "Role"], ["text", "specialistSubject", "Specialist Subject"], ["text", "status", "Status"], ["text", "dormacyReason", "Dormacy Reason"]];
+        $getRow = [];
         require '../../functions/form-generate-function.php';
     ?>
     <div class="form-group">
