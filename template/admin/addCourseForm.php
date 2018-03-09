@@ -5,7 +5,6 @@
         $getRow = [];
         require '../../functions/form-generate-function.php';
     ?>
-    <div>
     <div class="form-group">
         <label for="degreeOption">Select Degree</label>
         <select class="form-control" id="degreeOption" name="degree">

@@ -34,7 +34,7 @@
                     <ul class="nav flex-column">
                         <li><a href="index.php">Dashboard</a></li>
                         <?php 
-                            $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Report"];
+                            $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Assignment Management", "Attendance Records", "Report", "Time Table Management", "Diary Management"];
                             require '../../functions/listGenerate.php';
                             listGenerate($sidebar);
                         ?>

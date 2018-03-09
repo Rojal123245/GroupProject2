@@ -40,6 +40,18 @@
 			'content' => contentLoadingFunction('../../template/admin/viewCourse.php', [])
 		];
 	}
+	else if('a'.sha1("Modules") == $table){
+		$templateVars = [
+			'title' => "Add Modules",
+			'content' => contentLoadingFunction('../../template/admin/addModuleForm.php', [])
+		];	
+	}
+	else if('v'.sha1("Modules") == $table){
+		$templateVars = [
+			'title' => "View Course",
+			'content' => contentLoadingFunction('../../template/admin/viewModule.php', [])
+		];
+	}
 	else if('a'.sha1("Personal Tutor Management") == $table){
 		$templateVars = [
 			'title' => "Add Personal Tutor",
@@ -62,6 +74,18 @@
 		$templateVars = [
 			'title' => "View Report",
 			'content' => contentLoadingFunction('../../template/admin/viewReport.php', [])
+		];
+	}
+	else if('a'.sha1("Attendance Records") == $table){
+		$templateVars = [
+			'title' => "Create Attendance",
+			'content' => contentLoadingFunction('../../template/admin/createAttendance.php', [])
+		];	
+	}
+	else if('v'.sha1("Attendance Records") == $table){
+		$templateVars = [
+			'title' => "View Attendance",
+			'content' => contentLoadingFunction('../../template/admin/viewAttendance.php', [])
 		];
 	}
 
