@@ -1,4 +1,7 @@
 <?php 
+	require '../../databaseConnect/connectSQL.php';
+	require '../../classes/databaseQuery.php';
+	require '../../classes/table-generate-function.php';
 	$table = $_GET['t'];
 	require '../../functions/load-Template-Function.php';
 	if('a'.sha1("Student") == $table){
@@ -31,12 +34,11 @@
 			'content' => contentLoadingFunction('../../template/admin/addCourseForm.php', [])
 		];	
 	}
-	else if('v'.sha1("Staff") == $table){
+	else if('v'.sha1("Courses") == $table){
 		$templateVars = [
 			'title' => "View Course",
-			'content' => contentLoadingFunction('../../template/admin/viewRecordStaff.php', [])
+			'content' => contentLoadingFunction('../../template/admin/viewCourse.php', [])
 		];
-<<<<<<< HEAD
 	}
 	else if('a'.sha1("Modules") == $table){
 		$templateVars = [
@@ -51,21 +53,29 @@
 		];
 	}
 	else if('a'.sha1("Personal Tutor Management") == $table){
-=======
-	}else if('a'.sha1("Modules") == $table){
->>>>>>> 97a012958e944b94e4ff1f690f61bb9a058a613a
 		$templateVars = [
-			'title' => "Add Module",
-			'content' => contentLoadingFunction('../../template/admin/addModuleForm.php', [])
-		];
-	}
-	else if('a'.sha1("Patmanagements") == $table){
-		$templateVars = [
-			'title' => "Add PAT",
+			'title' => "Add Personal Tutor",
 			'content' => contentLoadingFunction('../../template/admin/addPATForm.php', [])
+		];	
+	}
+	else if('v'.sha1("Personal Tutor Management") == $table){
+		$templateVars = [
+			'title' => "View Personal Tutor",
+			'content' => contentLoadingFunction('../../template/admin/viewPAT.php', [])
 		];
 	}
-<<<<<<< HEAD
+	else if('a'.sha1("Report") == $table){
+		$templateVars = [
+			'title' => "Create Report",
+			'content' => contentLoadingFunction('../../template/admin/createReport.php', [])
+		];	
+	}
+	else if('v'.sha1("Report") == $table){
+		$templateVars = [
+			'title' => "View Report",
+			'content' => contentLoadingFunction('../../template/admin/viewReport.php', [])
+		];
+	}
 	else if('a'.sha1("Attendance Records") == $table){
 		$templateVars = [
 			'title' => "Create Attendance",
@@ -79,8 +89,6 @@
 		];
 	}
 
-=======
->>>>>>> 97a012958e944b94e4ff1f690f61bb9a058a613a
 	$html = contentLoadingFunction('../../template/admin/admin-layout.php', $templateVars);
 	echo $html;
 ?>
