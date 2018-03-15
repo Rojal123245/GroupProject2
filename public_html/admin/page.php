@@ -76,12 +76,6 @@
 			'content' => contentLoadingFunction('../../template/admin/viewReport.php', [])
 		];
 	}
-	else if('a'.sha1("Attendance Records") == $table){
-		$templateVars = [
-			'title' => "Create Attendance",
-			'content' => contentLoadingFunction('../../template/admin/createAttendance.php', [])
-		];	
-	}
 	else if('v'.sha1("Attendance Records") == $table){
 		$templateVars = [
 			'title' => "View Attendance",
