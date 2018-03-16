@@ -1,16 +1,25 @@
 <?php 
 	$title = "Dashboard";
 	$status = "active";
-	$content = "
-			<h3>Welcome to Woodland University Dashboard</h3><br>
-			<p>This is the control panel of e-learning site of woodland university college. Here, you can alter the site.</p>
-			<p>This is the control panel of e-learning site of woodland university college. Here, you can alter the site.</p>
-			<p>This is the control panel of e-learning site of woodland university college. Here, you can alter the site.</p>
-			<p>This is the control panel of e-learning site of woodland university college. Here, you can alter the site.</p>
-			<p>This is the control panel of e-learning site of woodland university college. Here, you can alter the site.</p>
-			<p>This is the control panel of e-learning site of woodland university college. Here, you can alter the site.</p>
-			<p>This is the control panel of e-learning site of woodland university college. Here, you can alter the site.</p>
-		";
+	$content = '
+			<h3 style="margin-bottom: 20px;">Welcome to Admin Panel of Woodlands University College!</h3>
+			<p class="animated fadeIn">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<p class="animated fadeIn">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		';
 	require '../../template/admin/admin-layout.php';
 
 ?>
