@@ -1,10 +1,14 @@
-<li class="dropdown"><a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle"><?php echo $dropDown ?> <span class="caret"></span></a>
-    <ul role="menu" class="dropdown-menu">
-    	<?php 
+<div class="btn-group">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $dropDown ?></button>
+
+    <div class="dropdown-menu">
+        
+
+        <?php 
     		foreach ($dropDownContent as $key) {
-    			echo '<li role="presentation"><a href="'. $key. '.php">'.
-    					$key.'</a></li>';
+    			echo '<a class="dropdown-item" href="'. $key. '.php">'.
+    					$key.'</a>';
     		}
     	 ?>
-    </ul>
-</li>
+    </div>
+</div>
