@@ -1,5 +1,5 @@
-<form method="POST" action="add-student.php" enctype="multipart/form-data">
-    <h2 class="text-center">Add Student Record</h2>
+<form method="POST" action="add-student.php" enctype="multipart/form-data" class="add-form z-depth-2">
+    <h2 class="text-center form-heading z-depth-1-half">Add Student Record</h2>
     <?php 
         $formData = [["text", "studentFirstName", "First Name"], ["text", "studentMiddleName", "Middle Name"], ["text", "studentSurName", "Last Name"], ["email", "email", "Email"], ["text", "addressTermTime", "Term Time Address"], ["text", "addressNonTT", "Non Term Time Address"], ["text", "phone", "Phone Number"], ["number", "currentCoursCode", "Course Code"], ["text", "entryQualification", "Qualification"], ["text", "status", "Status"], ["text", "dormacyReason", "Dormacy Reason"]];
         $getRow = [];
@@ -17,10 +17,10 @@
         </div>
     </div>
     <div class="form-group text-center">
-        <input type="submit" name="submit" value="Add Record" class="btn btn-primary">
+        <input type="submit" name="submit" value="Add Record" class="btn btn-primary hoverable">
     </div>
 </form><hr>
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="" method="POST" enctype="multipart/form-data" class="add-form z-depth-2">
     <h3>You can upload excel file here:</h3>
     <label for="file-input" class="control-label">File Input</label>
     <input type="file" name="file-input" class="form-control" />

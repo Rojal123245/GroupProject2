@@ -1,50 +1,91 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><?php echo $title; ?></title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../assets/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" type="text/css" href="../../assets/css/adminstyle.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+</head>
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php echo $title; ?></title>
-        <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="../../assets/css/admin/style.css" />
-        <script src="../../assets/js/jquery.min.js"></script>
-        <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
-    </head>
+<body> 
+    <!-- Header -->
+    <header class="z-depth-1-half">        
+        <div class="logo">
+            <img src="../../assets/images/logo.png" height="60px">
+        </div>
+        <div class="admin-dropdown">
+            <ul class="navbar-nav mr-auto">
+                <!-- Dropdown -->            
+                <li class="nav-item dropdown">
+                    <?php 
+                        $dropDown = "Admin Username";
+                        $dropDownContent = ["Profile", "Settings", "Logout"];
+                        require '../../functions/dropDownCode.php';
+                     ?>
+                </li>
 
-    <body>
-        <nav class="navbar navbar-inverse" style="margin:0;">
-            <div class="container-fluid">
-                <div class="navbar-header"><a href="index.php" class="navbar-brand navbar-link"><h3>Dashboard</h3></a>
-                    <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                </div>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <?php 
-                            $dropDown = "Admin";
-                            $dropDownContent = ["settings", "logout"];
-                            require '../../functions/dropDownCode.php';
-                         ?>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+            </ul>
+        </div>
+    </header>
+    <!-- Header -->
+   
+    <!-- Main Content -->
+    <main>
         <div class="container">
             <div class="row col-md-12">
-                <div class="col-md-3 left">
+                <div class="col-md-3 left" id="sidebar">
                     <ul class="nav flex-column">
                         <li><a href="index.php">Dashboard</a></li>
                         <?php 
-                            $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Attendance Records", "Report", "Time Table Management", "Diary Management"];
+                            $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Assignment Management", "Attendance Records", "Report", "Time Table Management", "Diary Management"];
                             require '../../functions/listGenerate.php';
                             listGenerate($sidebar);
                         ?>
                     </ul>
                 </div>
-                <div class="col-md-9 right">
+                <div class="col-md-9 right content" >
                     <?php echo $content; ?>
                 </div>
             </div>
         </div>
-    </body>
+    </main>
+    <!-- Main Content -->
+    
+    <!-- Footer -->
+    <footer>
+        <p>Copyright &copy; All Rights Reserved!</p>
+    </footer>
+    <!-- Footer -->
+
+    <!-- SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../assets/js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../assets/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../assets/js/mdb.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
+</body>
 
 </html>

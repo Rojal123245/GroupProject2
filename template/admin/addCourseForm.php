@@ -1,5 +1,5 @@
-<form method="POST" action="add-course.php">
-    <h2 class="text-center">Add Course</h2>
+<form method="POST" action="add-course.php" class="add-form z-depth-2">
+    <h2 class="text-center form-heading z-depth-1-half">Add Course</h2>
     <?php 
         $formData = [["text", "courseName", "Course Name"]];
         $getRow = [];
@@ -14,6 +14,6 @@
         </select>
     </div>
     <div class="form-group text-center">
-        <input type="submit" name="submit" value="Add Course" class="btn btn-primary">
+        <input type="submit" name="submit" value="Add Course" class="btn btn-primary hoverable">
     </div>
 </form>
