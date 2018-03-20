@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2018 at 11:11 AM
+-- Generation Time: Mar 06, 2018 at 09:41 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -39,11 +39,7 @@ CREATE TABLE `assignment` (
 --
 
 CREATE TABLE `attendance` (
-  `attendance_id` int(10) NOT NULL,
-  `student_id` int(9) DEFAULT NULL,
-  `month` varchar(255) NOT NULL,
-  `presentDays` varchar(10) NOT NULL DEFAULT '0',
-  `staff_id` int(9) DEFAULT NULL
+  `attendance_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -83,13 +79,7 @@ CREATE TABLE `diary` (
 
 CREATE TABLE `module` (
   `module_id` int(10) NOT NULL,
-  `course_id` int(10) NOT NULL,
-  `moduleName` varchar(255) NOT NULL,
-  `level` int(11) NOT NULL,
-  `pts` int(11) NOT NULL,
-  `ass1` varchar(255) NOT NULL,
-  `ass2` varchar(255) NOT NULL,
-  `exam` varchar(255) NOT NULL
+  `course_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -100,7 +90,6 @@ CREATE TABLE `module` (
 
 CREATE TABLE `patmanagement` (
   `pat_id` int(10) NOT NULL,
-  `student_id` int(9) NOT NULL,
   `staff_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -180,8 +169,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`Stid`, `studentFirstName`, `studentMiddleName`, `studentSurName`, `email`, `addressTermTime`, `addressNonTT`, `phone`, `currentCoursCode`, `entryQualification`, `gender`, `status`, `dormacyReason`) VALUES
-(1, 'Sunil', '', 'Thapa', 'sunil.thapa16@my.northampton.ac.uk', '7th street', 'apt2', 'saddfa', 3, 'fgdg', 'M', 'conditional', 'qwe'),
+(1, 'Sunil', '', 'Thapa', 'sunil.thapa16@my.northampton.ac.uk', '7th street', 'apt2', 'saddfa', 3, 'fgdg', 'M', 'zxc', 'qwe'),
 (2, 'John', 'Smith', 'David', 'john@example.com', 'adfasf', 'adfasdfg', '3243', 3, 'hhdf', 'M', 'qweqwe', 'zxczx'),
+(6, 'Ram', 'Prasad', 'Gothala', 'ram@gmail.com', 'jldka', 'wjkdlakj', '934434', 3, 'educated', 'male', 'dlkada', 'asafs\rsfa'),
 (8, 'Hel', 'jadsh', 'jhkjsdhl', 'jhflksjhdflk@gmail.com', 'ksjdhgksl', 'jhsljkdfg', 'sjkhgls', 3, 'ksjhf', 'M', 'gskjhf', 'dsgsdf'),
 (11, 'lkje', 'jlkjl', 'lkj', 'lkjlk@jk.com', 'kjha', 'lkjls', 'lkjl', 3, 'lkjl', 'M', 'lkjlk', 'kljlkjl');
 
@@ -209,9 +199,7 @@ ALTER TABLE `assignment`
 -- Indexes for table `attendance`
 --
 ALTER TABLE `attendance`
-  ADD PRIMARY KEY (`attendance_id`),
-  ADD KEY `student_id` (`student_id`),
-  ADD KEY `staff_id` (`staff_id`);
+  ADD PRIMARY KEY (`attendance_id`);
 
 --
 -- Indexes for table `course`
@@ -239,8 +227,7 @@ ALTER TABLE `module`
 --
 ALTER TABLE `patmanagement`
   ADD PRIMARY KEY (`pat_id`),
-  ADD KEY `staff_id` (`staff_id`),
-  ADD KEY `student_id` (`student_id`);
+  ADD KEY `staff_id` (`staff_id`);
 
 --
 -- Indexes for table `report`
@@ -318,7 +305,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `staffId` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -337,13 +324,6 @@ ALTER TABLE `timetable`
 --
 
 --
--- Constraints for table `attendance`
---
-ALTER TABLE `attendance`
-  ADD CONSTRAINT `staff_attendance_id` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_attendance_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`Stid`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `module`
 --
 ALTER TABLE `module`
@@ -353,8 +333,7 @@ ALTER TABLE `module`
 -- Constraints for table `patmanagement`
 --
 ALTER TABLE `patmanagement`
-  ADD CONSTRAINT `staff_pat_id` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_pat_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`Stid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `staff_pat_id` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student`
