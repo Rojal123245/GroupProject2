@@ -1,16 +1,3 @@
-<?php
-	require '../../databaseConnect/connectSQL.php';
-	$table = new GenerateTableClass();
-	$table->settableHeadingToTable(["Id", "First Name", "Middle Name", "Last Name", "Email", "Term Time Address", "Non Term Time Address", "Phone Number", "Course Code", "Qualification", "Gender", "Status", "Dormacy Reason"]);
-	$query = new QueryDatabase($pdo, "student");
-	$stmt = $query->findAll();
-	while ($key = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		$table->addRowToTable($key);
-	}
-	echo $table->getHTMLTemplate();
-
-?>
-<br>
 <div class="text-center">
 	<a data-toggle="collapse" href="#form" class="btn btn-info">Search Record</a>
 </div>
@@ -24,6 +11,19 @@
 	<input type="submit" name="search" value="Search" class="btn btn-info">
 </form>
 
+<?php
+	require '../../databaseConnect/connectSQL.php';
+	$table = new GenerateTableClass();
+	$table->settableHeadingToTable(["Id", "First Name", "Middle Name", "Last Name", "Email", "Term Time Address", "Non Term Time Address", "Phone Number", "Course Code", "Qualification", "Gender", "Status", "Dormacy Reason"]);
+	$query = new QueryDatabase($pdo, "student");
+	$stmt = $query->findAll();
+	while ($key = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		$table->addRowToTable($key);
+	}
+	echo $table->getHTMLTemplate();
+
+?>
+<br>
 
 <?php 
 	$page = $_GET['t'];

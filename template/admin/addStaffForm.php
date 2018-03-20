@@ -1,5 +1,5 @@
-<form method="POST" action="add-staff.php" enctype="multipart/form-data">
-    <h2 class="text-center">Add Staff Record</h2>
+<form method="POST" action="add-staff.php" enctype="multipart/form-data" class="add-form z-depth-2">
+    <h2 class="text-center form-heading z-depth-1-half">Add Staff Record</h2>
     <?php 
         $formData = [["text", "staffFirstName", "First Name"], ["text", "staffMiddleName", "Middle Name"], ["text", "staffSurName", "Last Name"], ["email", "email", "Email"], ["text", "address", "Address"], ["text", "phone", "Phone Number"], ["text", "role", "Role"], ["text", "specialistSubject", "Specialist Subject"], ["text", "status", "Status"], ["text", "dormacyReason", "Dormacy Reason"]];
         $getRow = [];
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="form-group text-center">
-        <input type="submit" name="submit" value="Add Record" class="btn btn-primary">
+        <input type="submit" name="submit" value="Add Record" class="btn btn-primary hoverable">
     </div>
 </form><hr>
 <form action="" method="POST" enctype="multipart/form-data">
