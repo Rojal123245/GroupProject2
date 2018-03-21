@@ -64,16 +64,16 @@
 			'content' => contentLoadingFunction('../../template/admin/viewPAT.php', [])
 		];
 	}
-	else if('a'.sha1("Report") == $table){
+	else if('a'.sha1("Concern Letter") == $table){
 		$templateVars = [
-			'title' => "Create Report",
-			'content' => contentLoadingFunction('../../template/admin/createReport.php', [])
+			'title' => "Create Concern Letter",
+			'content' => contentLoadingFunction('../../template/admin/createConcernLetter.php', [])
 		];	
 	}
-	else if('v'.sha1("Report") == $table){
+	else if('v'.sha1("Concern Letter") == $table){
 		$templateVars = [
-			'title' => "View Report",
-			'content' => contentLoadingFunction('../../template/admin/viewReport.php', [])
+			'title' => "View Concern Letter",
+			'content' => contentLoadingFunction('../../template/admin/viewConcernLetter.php', [])
 		];
 	}
 	else if('v'.sha1("Attendance Records") == $table){

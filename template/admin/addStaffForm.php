@@ -1,10 +1,25 @@
 <form method="POST" action="add-staff.php" enctype="multipart/form-data" class="add-form z-depth-2">
     <h2 class="text-center form-heading z-depth-1-half">Add Staff Record</h2>
     <?php 
-        $formData = [["text", "staffFirstName", "First Name"], ["text", "staffMiddleName", "Middle Name"], ["text", "staffSurName", "Last Name"], ["email", "email", "Email"], ["text", "address", "Address"], ["text", "phone", "Phone Number"], ["text", "role", "Role"], ["text", "specialistSubject", "Specialist Subject"], ["text", "status", "Status"], ["text", "dormacyReason", "Dormacy Reason"]];
+        $formData = [["text", "staffFirstName", "First Name"], ["text", "staffMiddleName", "Middle Name"], ["text", "staffSurName", "Last Name"], ["email", "email", "Email"], ["text", "address", "Address"], ["text", "phone", "Phone Number"], ["text", "role", "Role"], ["text", "specialistSubject", "Specialist Subject"]];
         $getRow = [];
         require '../../functions/form-generate-function.php';
     ?>
+    <div class="form-group">
+        <label for="statusOption">Status</label>
+        <select class="form-control" id="statusOption" name="status">
+          <option value="live">Live</option>
+          <option value="dormant">Dormant</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="dormacyReason">Dormacy Reason</label>
+        <select class="form-control" name="dormacyReason">
+          <option value="retired">Retired</option>
+          <option value="resigned">Resigned</option>
+          <option value="misconduct">Misconduct</option>
+        </select>
+    </div>
     <div class="form-group">
         <label>Gender</label>
         <div class="radio">
@@ -17,7 +32,7 @@
         </div>
     </div>
     <div class="form-group text-center">
-        <input type="submit" name="submit" value="Add Record" class="btn btn-primary hoverable">
+        <input type="submit" name="submit" value="Add Record" class="btn btn-primary">
     </div>
 </form><hr>
 <form action="" method="POST" enctype="multipart/form-data">

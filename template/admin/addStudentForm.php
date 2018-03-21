@@ -1,10 +1,26 @@
 <form method="POST" action="add-student.php" enctype="multipart/form-data" class="add-form z-depth-2">
     <h2 class="text-center form-heading z-depth-1-half">Add Student Record</h2>
     <?php 
-        $formData = [["text", "studentFirstName", "First Name"], ["text", "studentMiddleName", "Middle Name"], ["text", "studentSurName", "Last Name"], ["email", "email", "Email"], ["text", "addressTermTime", "Term Time Address"], ["text", "addressNonTT", "Non Term Time Address"], ["text", "phone", "Phone Number"], ["number", "currentCoursCode", "Course Code"], ["text", "entryQualification", "Qualification"], ["text", "status", "Status"], ["text", "dormacyReason", "Dormacy Reason"]];
+        $formData = [["text", "studentFirstName", "First Name"], ["text", "studentMiddleName", "Middle Name"], ["text", "studentSurName", "Last Name"], ["email", "email", "Email"], ["text", "addressTermTime", "Term Time Address"], ["text", "addressNonTT", "Non Term Time Address"], ["text", "phone", "Phone Number"], ["number", "currentCoursCode", "Course Code"], ["text", "entryQualification", "Qualification"]];
         $getRow = [];
         require '../../functions/form-generate-function.php';
     ?>
+    <div class="form-group">
+        <label for="statusOption">Status</label>
+        <select class="form-control" id="statusOption" name="status">
+          <option value="provisional">Provisional</option>
+          <option value="live">Live</option>
+          <option value="dormant">Dormant</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="dormacyReason">Dormacy Reason</label>
+        <select class="form-control" name="dormacyReason">
+          <option value="graduated">Graduated</option>
+          <option value="withdraw">Withdraw</option>
+          <option value="terminated">Terminated</option>
+        </select>
+    </div>
     <div class="form-group">
         <label>Gender</label>
         <div class="radio">
@@ -17,10 +33,10 @@
         </div>
     </div>
     <div class="form-group text-center">
-        <input type="submit" name="submit" value="Add Record" class="btn btn-primary hoverable">
+        <input type="submit" name="submit" value="Add Record" class="btn btn-primary">
     </div>
 </form><hr>
-<form action="" method="POST" enctype="multipart/form-data" class="add-form z-depth-2">
+<form action="" method="POST" enctype="multipart/form-data">
     <h3>You can upload excel file here:</h3>
     <label for="file-input" class="control-label">File Input</label>
     <input type="file" name="file-input" class="form-control" />

@@ -14,6 +14,6 @@
         </select>
     </div>
     <div class="form-group text-center">
-        <input type="submit" name="submit" value="Add Course" class="btn btn-primary hoverable">
+        <input type="submit" name="submit" value="Add Course" class="btn btn-primary">
     </div>
 </form>

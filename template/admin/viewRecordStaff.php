@@ -1,10 +1,15 @@
 <?php
 	require '../../databaseConnect/connectSQL.php';
+	$page = $_GET['t'];
 	$table = new GenerateTableClass();
-	$table->settableHeadingToTable(["Id", "First Name", "Middle Name", "Last Name", "Email", "Address", "Phone Number", "Role", "Specialist Subject", "Status", "Dormacy Reason", "Gender"]);
+	$table->settableHeadingToTable(["Id", "First Name", "Middle Name", "Last Name", "Email", "Edit", "Delete"]);
 	$query = new QueryDatabase($pdo, "staff");
-	$stmt = $query->findAll();
+	$stmt = $pdo->prepare('SELECT staffId, staffFirstName, staffMiddleName, staffSurName, email FROM staff');
+	$stmt->execute();
 	while ($key = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		$edit = '<a href="page.php?t='.$page.'&id='.$key['staffId'].'" style="padding-left: 10px; text-decoration: underline;">Update</a>';
+		$delete = '<a href="page.php?t='.$page.'&iddel='.$key['staffId'].'" style="padding-left: 10px; text-decoration: underline;" onclick="return confirm(\'Do you want to delete this record?\');">Delete</a>';
+		array_push($key, $edit, $delete);
 		$table->addRowToTable($key);
 	}
 	echo $table->getHTMLTemplate();
@@ -25,7 +30,6 @@
 
 
 <?php 
-	$page = $_GET['t'];
 	if(isset($_POST['search'])){
 		$searchKey = $_POST['keyword'];
 		$querySearch = $query->find($_POST['info'], $searchKey);

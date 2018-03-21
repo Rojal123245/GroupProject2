@@ -1,3 +1,21 @@
+<?php
+	require '../../databaseConnect/connectSQL.php';
+	$page = $_GET['t'];
+	$table = new GenerateTableClass();
+	$query = new QueryDatabase($pdo, "student");
+	$table->settableHeadingToTable(["Id", "First Name", "Middle Name", "Last Name", "Email", "Edit", "Delete"]);
+	$stmt = $pdo->prepare('SELECT Stid, studentFirstName, studentMiddleName, studentSurName, email FROM student');
+	$stmt->execute();
+	while ($key = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		$edit = '<a href="page.php?t='.$page.'&id='.$key['Stid'].'" style="padding-left: 10px; text-decoration: underline;">Update</a>';
+		$delete = '<a href="page.php?t='.$page.'&iddel='.$key['Stid'].'" style="padding-left: 10px; text-decoration: underline;" onclick="return confirm(\'Do you want to delete this record?\');">Delete</a>';
+		array_push($key, $edit, $delete);
+		$table->addRowToTable($key);
+	}
+	echo $table->getHTMLTemplate();
+
+?>
+<br>
 <div class="text-center">
 	<a data-toggle="collapse" href="#form" class="btn btn-info">Search Record</a>
 </div>
@@ -11,31 +29,17 @@
 	<input type="submit" name="search" value="Search" class="btn btn-info">
 </form>
 
-<?php
-	require '../../databaseConnect/connectSQL.php';
-	$table = new GenerateTableClass();
-	$table->settableHeadingToTable(["Id", "First Name", "Middle Name", "Last Name", "Email", "Term Time Address", "Non Term Time Address", "Phone Number", "Course Code", "Qualification", "Gender", "Status", "Dormacy Reason"]);
-	$query = new QueryDatabase($pdo, "student");
-	$stmt = $query->findAll();
-	while ($key = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		$table->addRowToTable($key);
-	}
-	echo $table->getHTMLTemplate();
-
-?>
-<br>
 
 <?php 
-	$page = $_GET['t'];
 	if(isset($_POST['search'])){
 		$searchKey = $_POST['keyword'];
 		$querySearch = $query->find($_POST['info'], $searchKey);
 		echo "<ul>";
 		foreach ($querySearch as $userList) {
 			echo '<li>'.$userList['studentSurName'].', '.$userList['studentFirstName'].' has user id '.$userList['Stid'].'
-				<a href="page.php?t='.$page.'&id='.$userList['Stid'].'" style="padding-left: 10px; color: #eee; text-decoration: underline;">Update</a>
-				<a href="page.php?t='.$page.'&iddel='.$userList['Stid'].'" style="padding-left: 10px; color: #eee; text-decoration: underline;" onclick="return confirm(\'Do you want to delete this record?\');">Delete</a>
-				<a href="page.php?t='.$page.'&idarc='.$userList['Stid'].'" style="padding-left: 10px; color: #eee; text-decoration: underline;">Move To Archive</a>
+				<a href="page.php?t='.$page.'&id='.$userList['Stid'].'" style="padding-left: 10px; text-decoration: underline;">Update</a>
+				<a href="page.php?t='.$page.'&iddel='.$userList['Stid'].'" style="padding-left: 10px; text-decoration: underline;" onclick="return confirm(\'Do you want to delete this record?\');">Delete</a>
+				<a href="page.php?t='.$page.'&idarc='.$userList['Stid'].'" style="padding-left: 10px; text-decoration: underline;">Move To Archive</a>
 				</li>
 			';
 		}
