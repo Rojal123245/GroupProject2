@@ -1,10 +1,26 @@
+<?php 
+    require '../../databaseConnect/connectSQL.php';
+?>
 <form method="POST" action="add-student.php" enctype="multipart/form-data" class="add-form z-depth-2">
     <h2 class="text-center form-heading z-depth-1-half">Add Student Record</h2>
     <?php 
-        $formData = [["text", "studentFirstName", "First Name"], ["text", "studentMiddleName", "Middle Name"], ["text", "studentSurName", "Last Name"], ["email", "email", "Email"], ["text", "addressTermTime", "Term Time Address"], ["text", "addressNonTT", "Non Term Time Address"], ["text", "phone", "Phone Number"], ["number", "currentCoursCode", "Course Code"], ["text", "entryQualification", "Qualification"]];
+        $formData = [["text", "studentFirstName", "First Name"], ["text", "studentMiddleName", "Middle Name"], ["text", "studentSurName", "Last Name"], ["email", "email", "Email"], ["text", "addressTermTime", "Term Time Address"], ["text", "addressNonTT", "Non Term Time Address"], ["text", "phone", "Phone Number"], ["text", "entryQualification", "Qualification"]];
         $getRow = [];
         require '../../functions/form-generate-function.php';
     ?>
+    <div class="form-group">
+        <label>Course</label>
+        <select class="form-control" name="currentCoursCode">
+            <?php 
+                $query = new QueryDatabase($pdo, "course");
+                $stmt = $query->findAll();
+                foreach($stmt as $row){
+                    echo '<option value="'.$row['course_id'].'">'.$row['courseName'].'
+                    </option>';
+                }
+            ?>
+        </select>
+    </div>
     <div class="form-group">
         <label for="statusOption">Status</label>
         <select class="form-control" id="statusOption" name="status">

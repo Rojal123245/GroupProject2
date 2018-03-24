@@ -12,7 +12,7 @@
 	    }
 	}
 </script>
-<form method="POST" action="add-report.php" onsubmit="return validateForm();">
+<form method="POST" action="add-concerLetter.php" onsubmit="return validateForm();">
 	<h3>PRIVATE & CONFIDENTIAL</h3>			
 
 	<input type="date" name="reportDate" required>
@@ -25,7 +25,7 @@
 	<input type="checkbox" name="cause" value="classworkSubmission">Not submitting coursework	<br>
 
 	<p>It is essential that you see me as soon as possible.  You must do this by</p>
-	<input type="text" name="day" placeholder="Deadline" required>.
+	<input type="date" name="day" placeholder="Deadline" required>.
 
 	 The meeting will provide an opportunity to check and review your progress and find a means of resolving any difficulties you may be experiencing.  You are reminded that all students enrolling on a course at UCN are expected to meet the academic requirements of their programme.  The Student Code details the implications of 'failure to meet academic, professional or vocational requirements' and whilst there may be mitigating circumstances not known to us at this time, you should regard this letter as an informal warning that your continuation on the course may be at risk. Failure to make contact may result in us deeming you to be withdrawn from your course.
 	<p>If for any reason you are experiencing difficulties which impact on your academic work, you should contact your personal tutor for advice.  You must however see me as instructed by the 
@@ -39,6 +39,8 @@
 	CAUSE FOR CONCERN LETTER	
 	</p>
 
+	<input type="text" name="toStudent" placeholder="To: Student Email">
+	
 	<div class="form-group text-center">
         <input type="submit" name="submit" value="Create" class="btn btn-primary">
     </div>

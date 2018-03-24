@@ -1,8 +1,8 @@
 <?php
 	require '../../databaseConnect/connectSQL.php';
 	$table = new GenerateTableClass();
-	$table->settableHeadingToTable(["Id", "Report Date", "Cause Of Report", "Meeting Deadline", "Complained By (Khoi)"]);
-	$query = new QueryDatabase($pdo, "report");
+	$table->settableHeadingToTable(["Id", "Report Date", "Cause Of Report", "Meeting Deadline", "Complained By"]);
+	$query = new QueryDatabase($pdo, "concernletter");
 	$stmt = $query->findAll();
 	while ($key = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		if($key['cause'] == "PAT"){
