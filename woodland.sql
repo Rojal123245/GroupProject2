@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2018 at 09:41 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Apr 02, 2018 at 05:29 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -79,8 +79,25 @@ CREATE TABLE `diary` (
 
 CREATE TABLE `module` (
   `module_id` int(10) NOT NULL,
-  `course_id` int(10) NOT NULL
+  `course_id` int(10) NOT NULL,
+  `moduleName` varchar(255) NOT NULL,
+  `level` int(5) NOT NULL,
+  `pts` int(10) NOT NULL,
+  `ass1` varchar(255) NOT NULL,
+  `ass2` varchar(255) NOT NULL,
+  `exam` varchar(255) NOT NULL,
+  `moduleCode` varchar(255) NOT NULL,
+  `tutor_id` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `module`
+--
+
+INSERT INTO `module` (`module_id`, `course_id`, `moduleName`, `level`, `pts`, `ass1`, `ass2`, `exam`, `moduleCode`, `tutor_id`) VALUES
+(1, 3, 'Web Programming', 5, 20, 'Assessment', 'Assessment', '2', 'CSY2028', 1),
+(2, 3, 'System Design and Development', 5, 20, 'TCA', 'Assessment', '2', 'CSY2030', 3),
+(3, 3, 'Artificial Intelligence', 5, 40, 'Assessment', 'Assessment', '2', 'CSY2054', 4);
 
 -- --------------------------------------------------------
 
@@ -140,7 +157,9 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staffId`, `staffFirstName`, `staffMiddleName`, `staffSurName`, `email`, `address`, `phone`, `role`, `specialistSubject`, `status`, `dormacyReason`, `gender`) VALUES
-(1, 'Ganesh', 'Kumar', 'Khatri', 'ganesh_khatri02@outlook.com', 'hahah', '132123', 'Teacher', 'Web Programming', 'Married', 'Don\'t know', 'M');
+(1, 'Ganesh', 'Kumar', 'Khatri', 'ganesh_khatri02@outlook.com', 'hahah', '132123', 'Teacher', 'Web Programming', 'Married', 'Don\'t know', 'M'),
+(3, 'Raj', 'Kumar', 'Phagami', 'raju@woodland.uni.co.uk', 'asdf', '6846516', 'Teacher', 'Java Programming', 'live', 'none', 'M'),
+(4, 'Sunil', '', 'Thapa', 'sunil.thapa@woodland.uni.co.uk', 'Silicon Valley', '9860740002', 'Teacher', 'Artificial Intelligence', 'live', 'none', 'M');
 
 -- --------------------------------------------------------
 
@@ -220,7 +239,8 @@ ALTER TABLE `diary`
 --
 ALTER TABLE `module`
   ADD PRIMARY KEY (`module_id`),
-  ADD KEY `course_id` (`course_id`);
+  ADD KEY `course_id` (`course_id`),
+  ADD KEY `tutor_id` (`tutor_id`);
 
 --
 -- Indexes for table `patmanagement`
@@ -287,7 +307,7 @@ ALTER TABLE `diary`
 -- AUTO_INCREMENT for table `module`
 --
 ALTER TABLE `module`
-  MODIFY `module_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `module_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `patmanagement`
@@ -305,7 +325,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `staffId` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -327,7 +347,8 @@ ALTER TABLE `timetable`
 -- Constraints for table `module`
 --
 ALTER TABLE `module`
-  ADD CONSTRAINT `course_module_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `course_module_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tutor_module_id` FOREIGN KEY (`tutor_id`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `patmanagement`
