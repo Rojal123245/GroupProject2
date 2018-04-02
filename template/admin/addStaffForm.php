@@ -15,6 +15,7 @@
     <div class="form-group">
         <label for="dormacyReason">Dormacy Reason</label>
         <select class="form-control" name="dormacyReason">
+          <option value="none">None</option>
           <option value="retired">Retired</option>
           <option value="resigned">Resigned</option>
           <option value="misconduct">Misconduct</option>

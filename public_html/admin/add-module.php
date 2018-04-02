@@ -7,7 +7,6 @@
 		unset($_POST['submit']);
 		$record = $_POST;
 		$result = $moduleObj->saveQuery($record);
-		
 		$content = "<h3>Record had been added</h3>";
 		
 	}
