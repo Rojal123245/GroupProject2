@@ -64,7 +64,7 @@ if(isset($_POST['upload'])){
         <?php } else{
                     $handle= fopen($fileTmpName, 'r');
                    // $myData=fgetcsv($handle,1000,',');
-
+//$pwd has been updated
                     while (($myData=fgetcsv($handle,1000,','))!=FALSE) {
                         $staffFirstName=$myData[0];
                         $staffMiddleName=$myData[1];
@@ -77,8 +77,8 @@ if(isset($_POST['upload'])){
                         $status=$myData[8];
                         $dormacyReason=$myData[9];
                         $gender=$myData[10];
-                        
-                        $query="INSERT INTO staff(staffFirstName, staffMiddleName, staffSurName, email, address, phone, role, specialistSubject, status, dormacyReason, gender)
+                        $pwd = strtolower($myData[0].$myData[2]);
+                        $query="INSERT INTO staff(staffFirstName, staffMiddleName, staffSurName, email, address, phone, role, specialistSubject, status, dormacyReason, gender, pwd)
                             VALUES(:staffFirstName, 
                                 :staffMiddleName, 
                                 :staffSurName, 
@@ -89,7 +89,8 @@ if(isset($_POST['upload'])){
                                 :specialistSubject, 
                                 :status, 
                                 :dormacyReason, 
-                                :gender)";
+                                :gender,
+                                :pwd)";
 
                         $valuesGiven = [
                             "staffFirstName" => $staffFirstName,
@@ -102,7 +103,8 @@ if(isset($_POST['upload'])){
                             "specialistSubject" => $specialistSubject, 
                             "status" => $status, 
                             "dormacyReason" => $dormacyReason,
-                            "gender" => $gender
+                            "gender" => $gender,
+                            "pwd" => $pwd
 
                         ];
                         $statement = $pdo->prepare($query);

@@ -29,7 +29,7 @@
                 <li class="nav-item dropdown">
                     <?php 
                         $dropDown = "Admin Username";
-                        $dropDownContent = ["Profile", "Settings", "Logout"];
+                        $dropDownContent = ["Profile", "Logout"];
                         require '../../functions/dropDownCode.php';
                      ?>
                 </li>
@@ -47,7 +47,7 @@
                     <ul class="nav flex-column">
                         <li><a href="index.php">Dashboard</a></li>
                         <?php 
-                            $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Attendance Records", "Concern Letter", "Report", "Time Table Management", "Diary Management"];
+                            $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Attendance Records", "Concern Letter", "Report", "Time Table Management", "Diary Management", "Announcement"];
                             require '../../functions/listGenerate.php';
                             listGenerate($sidebar);
                         ?>

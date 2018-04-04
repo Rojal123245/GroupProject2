@@ -6,11 +6,14 @@
 		$staffObj = new QueryDatabase($pdo, 'staff');
 		unset($_POST['submit']);
 		$record = $_POST;
+		$record['pwd'] = strtolower($record['staffFirstName'].$record['staffSurName']);
 		if (isset($_GET['p'])) {
 			$pk = $_GET['p'];
 			$result = $staffObj->update($record, $pk);
 		}
 		else{
+			array_push($record, $record['pwd']);
+			unset($record[0]);
 			$result = $staffObj->saveQuery($record);
 		}
 		$content = "<h3>Record had been added</h3>";

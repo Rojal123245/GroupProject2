@@ -82,7 +82,18 @@
 			'content' => contentLoadingFunction('../../template/admin/viewAttendance.php', [])
 		];
 	}
-
+	else if('a'.sha1("Announcement") == $table){
+		$templateVars = [
+			'title' => "Create Announcement",
+			'content' => contentLoadingFunction('../../template/admin/createAnnouncement.php', [])
+		];	
+	}
+	else if('v'.sha1("Announcement") == $table){
+		$templateVars = [
+			'title' => "View Announcement",
+			'content' => contentLoadingFunction('../../template/admin/viewAnnouncement.php', [])
+		];
+	}
 	$html = contentLoadingFunction('../../template/admin/admin-layout.php', $templateVars);
 	echo $html;
 ?>

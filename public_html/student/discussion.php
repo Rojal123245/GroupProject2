@@ -1,7 +1,12 @@
-<div class="tab-pane fade" id="pills-discuss" role="tabpanel" aria-labelledby="pills-discuss-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-            </div>
+<?php 
+	require '../../functions/load-Template-Function.php';
+$title = "Discussion Panel";
+$active = 4;
+$content = contentLoadingFunction('../../template/student/discussion-view-template.php', []);
+$templateVars = [
+	'title' => $title,
+	'active' => $active,
+	'content' => $content
+];
+echo contentLoadingFunction('../../template/student/module-layout.php', $templateVars);
+?>

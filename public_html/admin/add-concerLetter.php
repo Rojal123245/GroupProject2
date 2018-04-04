@@ -9,8 +9,7 @@
 		$result = $reportObj->saveQuery($record);
 		$receiver = $record['toStudent'];
 		$mailSubject = $record['cause'];
-		$mailText = '<h3>PRIVATE & CONFIDENTIAL</h3>			
-
+		$mailText = '<h3>PRIVATE & CONFIDENTIAL</h3>
 		'.$record['reportDate'].'
 		<br><br>
 		Dear <br>
