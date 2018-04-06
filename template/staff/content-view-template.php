@@ -4,15 +4,20 @@
                     <a class="nav-item nav-link active" id="nav-term1-tab" data-toggle="tab" href="#nav-term1" role="tab" aria-controls="nav-term1" aria-selected="true">Term 1</a>
                     <a class="nav-item nav-link" id="nav-term2-tab" data-toggle="tab" href="#nav-term2" role="tab" aria-controls="nav-term2" aria-selected="false">Term 2</a>
                   </div>
+                  <a href="../../template/staff/add-lecture-templeta.php">Add slides</a>
+                  <a href="../../template/staff/delete-lecture-template.php">Delete slides</a>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                   <div class="tab-pane fade show active" id="nav-term1" role="tabpanel" aria-labelledby="nav-term1-tab">
                       <div class="weekly-materials example z-depth-1-half">
                       <h5>Week 1</h5>
+                      
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <?php $weekvalue = 'Week1'; 
+                      <?php $weekvalue = 'Week1'; 
+
+
                           echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'
                           ?> <br>
                           <a href="#">Tutorial Activities</a> <br>
@@ -22,6 +27,7 @@
                   </div>
                   <div class="weekly-materials example z-depth-1-half">
                       <h5>Week 2</h5>
+
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
@@ -36,7 +42,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week3/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -47,7 +53,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week4/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -58,7 +64,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week5/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -69,7 +75,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week6/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -80,7 +86,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week7/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -91,7 +97,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week8/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -102,7 +108,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week9/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -113,7 +119,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week10/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -126,7 +132,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week11/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -137,7 +143,7 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="#">Lecture Slides</a> <br>
+                          <a href="../../files/Week12/">Lecture Slides</a> <br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>

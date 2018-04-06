@@ -71,8 +71,7 @@
                         <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="../../public_html/student/profile.php">Profile</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>

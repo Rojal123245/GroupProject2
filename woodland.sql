@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2018 at 08:27 AM
+-- Generation Time: Apr 06, 2018 at 02:47 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -192,10 +192,11 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staffId`, `staffFirstName`, `staffMiddleName`, `staffSurName`, `email`, `address`, `phone`, `role`, `specialistSubject`, `status`, `dormacyReason`, `gender`, `pwd`) VALUES
-(4501, 'Ganesh', 'Kumar', 'Khatri', 'ganesh_khatri02@outlook.com', 'hahah', '132123', 'Teacher', 'Web Programming', 'Married', 'Don\'t know', 'M', 'ganeshkhatri'),
+(4501, 'Ganesh', 'Kumar', 'Khatri', 'ganesh_khatri02@outlook.com', 'Kathmandu', '981234454', 'admin', 'Web Programming', 'Married', 'Don\'t know', 'M', 'ganeshkhatri'),
 (4502, 'Raj', 'Kumar', 'Phagami', 'raju@woodland.uni.co.uk', 'asdf', '6846516', 'Teacher', 'Java Programming', 'live', 'none', 'M', 'rajphagami'),
 (4503, 'Sunil', '', 'Thapa', 'sunil.thapa@woodland.uni.co.uk', 'Silicon Valley', '9860740002', 'Teacher', 'Artificial Intelligence', 'live', 'none', 'M', 'sunilthapa'),
-(4504, 'Surya', 'Pratap', 'Limbu', 'surya.pratap@woodland.ac.uk', 'Thali', '9840339562', 'Teacher', 'Software Engineering', 'live', 'none', 'M', 'suryalimbu');
+(4504, 'Surya', 'Pratap', 'Limbu', 'surya.pratap@woodland.ac.uk', 'Thali', '9840339562', 'Teacher', 'Software Engineering', 'live', 'none', 'M', 'suryalimbu'),
+(4505, 'Rojal', 'Kumar', 'Prsdhan', 'rozalpra@gmail.com', 'imadol', '982348978', 'Teacher', 'Software Engineering', 'live', 'none', 'M', 'rojalprsdhan');
 
 -- --------------------------------------------------------
 
@@ -225,8 +226,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`Stid`, `studentFirstName`, `studentMiddleName`, `studentSurName`, `email`, `addressTermTime`, `addressNonTT`, `phone`, `currentCoursCode`, `entryQualification`, `gender`, `status`, `dormacyReason`, `pwd`) VALUES
-(1, 'Sunil', '', 'Thapa', 'sunil.thapa16@my.northampton.ac.uk', '7th street', 'apt2', 'saddfa', 3, 'fgdg', 'M', 'zxc', 'qwe', 'sunilthapa'),
-(2, 'John', 'Smith', 'David', 'john@example.com', 'adfasf', 'adfasdfg', '3243', 3, 'hhdf', 'M', 'qweqwe', 'zxczx', 'johndavid');
+(17421492, 'Sunil', '', 'Thapa', 'sunil.thapa16@my.northampton.ac.uk', '7th street', 'apt2', '9860740002', 3, 'fgdg', 'M', 'zxc', 'qwe', 'sunilthapa'),
+(17421493, 'John', 'Smith', 'David', 'john@example.com', 'adfasf', 'adfasdfg', '3243', 3, 'hhdf', 'M', 'qweqwe', 'zxczx', 'johndavid');
 
 -- --------------------------------------------------------
 
@@ -383,13 +384,13 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staffId` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `staffId` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4506;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `Stid` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Stid` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `timetable`

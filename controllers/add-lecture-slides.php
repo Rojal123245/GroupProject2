@@ -1,34 +1,52 @@
-
 <?php
-if(isset($_POST['upload'])){
- $targetfolder = "../testupload/";
+require '../classes/databaseQuery.php';
+require '../databaseConnect/connectSQL.php';
 
- $targetfolder = $targetfolder . basename( $_FILES['file']['name']) ;
+if(isset($_FILES['pdf_name'])){
+	
+	$pdf = $_FILES['pdf_name'];
+	$weeks = $_POST['week'];
+	$pdf_name = $pdf['name'];
+	$pdf_tmp = $pdf['tmp_name'];
+	$pdf_size = $pdf['size'];
+	$pdf_error = $pdf['error'];
 
-if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder))
+	$pdf_ext = explode('.', $pdf_name);
+	$pdf_ext = strtolower(end($pdf_ext));
 
- {
+	$allow = array('pdf');
 
- echo "The file ". basename( $_FILES['file']['name']). " is uploaded";
+	if(in_array($pdf_ext, $allow)){
+		if($pdf_error === 0){
+			if($pdf_size <=20971529843){
+				$pdf_new_name = uniqid('',true) . $pdf_name;
+				$pdf_folder = '../files/'.$weeks.'/' . $pdf_new_name;
+				
+					$reportObj = new QueryDatabase($pdo, 'pdfdata');
+					unset($_POST['upload']);
+					$critera = $_POST;
+					$critera['pdf_name'] = $pdf_new_name;
+					print_r($critera);
+					unset($critera['submit']);
+					$result = $reportObj->saveQuery($critera);
 
- }
 
- else {
+		if($result == true){
+					echo "<script type='text/javascrip'>alert('pdf has been added');</script>";
+				}
+				else{
+					echo "<script type='text/javascrip'>alert('pdf hasnot been added');</script>";
+				}
 
- echo "Problem uploading file";
-
- }
+				if(move_uploaded_file($pdf_tmp, $pdf_folder)){
+					echo "<script type='text/javascrip'>alert('pdf has been added');</script>";
+				}
+				else{
+					echo "<script type='text/javascrip'>alert('pdf hasnot been added');</script>";
+				}
+				header('location:../public_html/staff/content.php');
+			}
+		}
+	}
 }
-
- ?>
-
-<form action="add-lecture-slides.php" method="post" enctype="multipart/form-data">
-<label>Title </label>
-<input type="text" name="ltitle">
-<input type="file" name="file" size="50" />
-
-<br />
-
-<input type="submit" name="upload" value="Upload" />
-
-</form>
+?>

@@ -7,7 +7,7 @@
 	$query = new QueryDatabase($pdo, "staff");
 ?>
 <div>
-	<form method="POST" action="<?php echo 'profile.php?p='.$p.'' ?>">
+	<form method="POST" action="<?php echo 'profile.php?p='.$p.'' ?>&id=1">
 	 	<?php
 	 		function update($key, $value, $query){
 				$querySearch = $query->find($key, $value);
@@ -17,7 +17,7 @@
 				 	echo '<input type="checkbox" onclick="show()">Show Password <br>';
 				}
 			}
-	 		update("staffId", $_SESSION['adminId'], $query);
+	 		update("staffId", $_SESSION['staffId'], $query);
 	 	?>
  		<input type="submit" name="submit" value="Update" class="btn btn-success">
  	</form>

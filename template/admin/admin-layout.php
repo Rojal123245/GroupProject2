@@ -30,6 +30,11 @@
                     <?php 
                         $dropDown = "Admin Username";
                         $dropDownContent = ["Profile", "Logout"];
+                        if (isset($_SESSION)) {
+                            require '../../functions/dropDownCode.php';
+                        }else{
+                            require '../functions/dropDownCode.php';
+                        }
                         require '../../functions/dropDownCode.php';
                      ?>
                 </li>
@@ -48,6 +53,11 @@
                         <li><a href="index.php">Dashboard</a></li>
                         <?php 
                             $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Attendance Records", "Concern Letter", "Report", "Time Table Management", "Diary Management", "Announcement"];
+                        //     if (isset($_SESSION)) {
+                        //     require '../../functions/listGenerate.php';
+                        // }else{
+                        //     require '../functions/listGenerate.php';
+                        // }
                             require '../../functions/listGenerate.php';
                             listGenerate($sidebar);
                         ?>

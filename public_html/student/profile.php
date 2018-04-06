@@ -11,26 +11,27 @@
 <?php 
 	// require '../classes/databaseQuery.php';
 	require '../../databaseConnect/connectSQL.php';
-	$title = "Profile";		
+	$title = "Profile";	
+	$active = 0;	
 	require '../../functions/load-Template-Function.php';
-	$content = contentLoadingFunction('../../template/admin/profileViewTemplate.php', []);
-	require '../../template/admin/admin-layout.php';
+	$content = contentLoadingFunction('../../template/student/profileViewTemplate.php', []);
+	require '../../template/student/module-layout.php';
 
 	if (isset($_POST['submit'])) {
 		$title = "Thanks";
-		$staffObj = new QueryDatabase($pdo, 'staff');
+		$studentObj = new QueryDatabase($pdo, 'student');
 		unset($_POST['submit']);
 		$record = $_POST;
-		$record['pwd'] = strtolower($record['staffFirstName'].$record['staffSurName']);
+		$record['pwd'] = strtolower($record['studentFirstName'].$record['studentSurName']);
 		if (isset($_GET['p'])) {
 			$pk = $_GET['p'];
-			$result = $staffObj->update($record, $pk);
+			$result = $studentObj->update($record, $pk);
 			unset($_GET['p']);
 		}
 		else{
 			array_push($record, $record['pwd']);
 			unset($record[0]);
-			$result = $staffObj->saveQuery($record);
+			$result = $studentObj->saveQuery($record);
 		}
 		$content = "<h3>Record had been added</h3>";
 		

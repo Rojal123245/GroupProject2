@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	require '../../databaseConnect/connectSQL.php';
 	require '../../classes/databaseQuery.php';
 	require '../../classes/table-generate-function.php';

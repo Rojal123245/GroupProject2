@@ -1,5 +1,6 @@
-
-
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +47,7 @@
                 <!-- Links -->
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Announcement</a>
@@ -70,8 +71,7 @@
                         <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="../../public_html/staff/profile.php">Profile</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
@@ -90,8 +90,8 @@
                 <div class="announce-header">
                     <h3>Announcements</h3> 
                     <div id="announce-cat">
-                        <a href="#">Administration</a>
-                        <a href="#">Staffs</a>
+                        <a href="#" style="border-right:2px groove black; padding-right: 5px;">Administration</a>
+                        <a href="#" style="border-right:2px groove black;padding-right: 5px;">Staffs</a>
                     </div>
                 </div>
                 <hr>
@@ -120,7 +120,15 @@
         <!-- Courses and Modules -->
         <div class="modules example z-depth-1-half">
             <div class="modules-header">
-                <h3>My Modules (Course: Software Engineering)</h3>
+                <h3>My Modules (<?php 
+                    $studentInfo = $student->find('Stid', 1);
+                    $studentFetch = $studentInfo->fetch();
+                    $courseInfo = $course->find('course_id', $studentFetch['currentCoursCode']);
+                    $courseName = $courseInfo->fetch();
+                    echo $courseName['degree'].' '.$courseName['courseName'];
+
+
+                 ?>)</h3>
             </div>
             <!--Accordion wrapper-->
             <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
@@ -140,7 +148,7 @@
                     <!-- Card body -->
                     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx" >
                         <div class="card-body">
-                            <div class="module-card example hoverable">
+                            <!-- <div class="module-card example hoverable">
                                 <div class="module-card-header">
                                     <h4>CSY-2028 <br> Web Programming</h4>
                                 </div>
@@ -153,77 +161,31 @@
                                     </div>
                                     <a href="../../public_html/staff/module.php" role="button" class="btn btn-primary">Go Here</a>
                                 </div>
-                            </div>
-                            <div class="module-card example hoverable">
-                                <div class="module-card-header">
-                                    <h4>CSY-2028 <br> Web Programming</h4>
-                                </div>
-                                <div class="module-card-body">
-                                    <p>
-                                        Mark Johnson <br> johnson@email.com <br> 2017/18
-                                    </p>
-                                    <div class="progress" style="margin-bottom: 10px;">
-                                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <a href="../../public_html/staff/module.php" role="button" class="btn btn-primary">Go Here</a>
-                                </div>
-                            </div>
-                            <div class="module-card example hoverable">
-                                <div class="module-card-header">
-                                    <h4>CSY-2028 <br> Web Programming</h4>
-                                </div>
-                                <div class="module-card-body">
-                                    <p>
-                                        Mark Johnson <br> johnson@email.com <br> 2017/18
-                                    </p>
-                                    <div class="progress" style="margin-bottom: 10px;">
-                                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <a href="../../public_html/staff/module.php" role="button" class="btn btn-primary">Go Here</a>
-                                </div>
-                            </div>
-                            <div class="module-card example hoverable">
-                                <div class="module-card-header">
-                                    <h4>CSY-2028 <br> Web Programming</h4>
-                                </div>
-                                <div class="module-card-body">
-                                    <p>
-                                        Mark Johnson <br> johnson@email.com <br> 2017/18
-                                    </p>
-                                    <div class="progress" style="margin-bottom: 10px;">
-                                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <a href="../../public_html/staff/module.php" role="button" class="btn btn-primary">Go Here</a>
-                                </div>
-                            </div>
-                            <div class="module-card example hoverable">
-                                <div class="module-card-header">
-                                    <h4>CSY-2028 <br> Web Programming</h4>
-                                </div>
-                                <div class="module-card-body">
-                                    <p>
-                                        Mark Johnson <br> johnson@email.com <br> 2017/18
-                                    </p>
-                                    <div class="progress" style="margin-bottom: 10px;">
-                                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <a href="../../public_html/staff/module.php" role="button" class="btn btn-primary">Go Here</a>
-                                </div>
-                            </div>
-                            <div class="module-card example hoverable">
-                                <div class="module-card-header">
-                                    <h4>CSY-2028 <br> Web Programming</h4>
-                                </div>
-                                <div class="module-card-body">
-                                    <p>
-                                        Mark Johnson <br> johnson@email.com <br> 2017/18
-                                    </p>
-                                    <div class="progress" style="margin-bottom: 10px;">
-                                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <a href="../../public_html/staff/module.php" role="button" class="btn btn-primary">Go Here</a>
-                                </div>
-                            </div>
+                            </div> -->
+<?php 
+    $moduleInfo = $module->find('course_id', $courseName['course_id']);
+    while($moduleDetail = $moduleInfo->fetch()){
+        $tutorInfo = $staff->find('staffId', $moduleDetail['tutor_id']);
+        $tutorDetail = $tutorInfo->fetch();
+        echo '
+            <div class="module-card example hoverable">
+                <div class="module-card-header">
+                    <h4>'.$moduleDetail['moduleCode'].' <br> '.$moduleDetail['moduleName'].'</h4>
+                </div>
+                <div class="module-card-body">
+                    <p>
+                        '.$tutorDetail['staffFirstName'].' '.$tutorDetail['staffSurName'].' <br> '.$tutorDetail['email'].' <br> 2017/18
+                    </p>
+                    <div class="progress" style="margin-bottom: 10px;">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                    </div>
+                    <a href="module.php?id='.$moduleDetail['module_id'].'" role="button" class="btn btn-primary">Go Here</a>
+                </div>
+            </div>
+        ';
+    }
+?>
+                            
                         </div>                    
                     </div>
                 </div>
@@ -238,11 +200,6 @@
                     <!-- Card body -->
                 
                 </div>
-                <!-- Accordion card -->
-
-                <!-- Accordion card -->
-                
-                <!-- Accordion card -->
             </div>
             <!--/.Accordion wrapper-->
         </div>

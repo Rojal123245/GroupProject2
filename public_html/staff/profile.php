@@ -11,10 +11,11 @@
 <?php 
 	// require '../classes/databaseQuery.php';
 	require '../../databaseConnect/connectSQL.php';
-	$title = "Profile";		
+	$title = "Profile";	
+	$active = 0;	
 	require '../../functions/load-Template-Function.php';
-	$content = contentLoadingFunction('../../template/admin/profileViewTemplate.php', []);
-	require '../../template/admin/admin-layout.php';
+	$content = contentLoadingFunction('../../template/staff/profileViewTemplate.php', []);
+	require '../../template/staff/module-layout.php';
 
 	if (isset($_POST['submit'])) {
 		$title = "Thanks";
