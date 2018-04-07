@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2018 at 02:47 PM
+-- Generation Time: Apr 07, 2018 at 05:30 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -31,15 +31,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `announcement` (
   `announcement_id` int(10) NOT NULL,
   `title` varchar(30) NOT NULL,
-  `descript` varchar(2000) NOT NULL
+  `descript` varchar(2000) NOT NULL,
+  `staffId` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `announcement`
 --
 
-INSERT INTO `announcement` (`announcement_id`, `title`, `descript`) VALUES
-(1, 'holiday tomorrow', 'Strike');
+INSERT INTO `announcement` (`announcement_id`, `title`, `descript`, `staffId`) VALUES
+(1, 'holiday tomorrow', 'Strike', 4501),
+(2, 'Deadline of AI assignment 2', '22-Apr-2018', 4501),
+(3, 'Deadline of AI assignment 1', '05-Jan-2018', 4503),
+(5, 'AI Dev Nepal', 'Coming on our university on 30-Apr-2018', 4503);
 
 -- --------------------------------------------------------
 
@@ -115,6 +119,28 @@ CREATE TABLE `diary` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `discussion`
+--
+
+CREATE TABLE `discussion` (
+  `discussion_id` int(9) NOT NULL,
+  `qs_student_id` int(9) NOT NULL,
+  `question` varchar(2000) NOT NULL,
+  `staff_id` int(9) DEFAULT NULL,
+  `ans_student_id` int(9) NOT NULL,
+  `ans` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `discussion`
+--
+
+INSERT INTO `discussion` (`discussion_id`, `qs_student_id`, `question`, `staff_id`, `ans_student_id`, `ans`) VALUES
+(1, 17421492, 'What is machine learning?', 0, 0, '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `module`
 --
 
@@ -136,7 +162,7 @@ CREATE TABLE `module` (
 --
 
 INSERT INTO `module` (`module_id`, `course_id`, `moduleName`, `level`, `pts`, `ass1`, `ass2`, `exam`, `moduleCode`, `tutor_id`) VALUES
-(1, 3, 'Web Programming', 5, 20, 'Assessment', 'Assessment', '2', 'CSY2028', 4501),
+(1, 3, 'Web Programming', 5, 20, 'Assessment', 'Assessment', '3', 'CSY2028', 4501),
 (2, 3, 'Processing', 5, 20, 'TCA', 'Assessment', '2', 'CSY2045', 4502),
 (3, 3, 'Artificial Intelligence', 5, 40, 'Assessment', 'Assessment', '2', 'CSY2054', 4503);
 
@@ -148,8 +174,17 @@ INSERT INTO `module` (`module_id`, `course_id`, `moduleName`, `level`, `pts`, `a
 
 CREATE TABLE `patmanagement` (
   `pat_id` int(10) NOT NULL,
-  `staff_id` int(10) NOT NULL
+  `staffId` int(10) NOT NULL,
+  `Stid` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patmanagement`
+--
+
+INSERT INTO `patmanagement` (`pat_id`, `staffId`, `Stid`) VALUES
+(2, 4501, 17421492),
+(3, 4502, 17421493);
 
 -- --------------------------------------------------------
 
@@ -226,7 +261,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`Stid`, `studentFirstName`, `studentMiddleName`, `studentSurName`, `email`, `addressTermTime`, `addressNonTT`, `phone`, `currentCoursCode`, `entryQualification`, `gender`, `status`, `dormacyReason`, `pwd`) VALUES
-(17421492, 'Sunil', '', 'Thapa', 'sunil.thapa16@my.northampton.ac.uk', '7th street', 'apt2', '9860740002', 3, 'fgdg', 'M', 'zxc', 'qwe', 'sunilthapa'),
+(17421492, 'Sunil', '', 'Thapa', 'sunil.thapa16@my.northampton.ac.uk', 'Nayabazar', 'apt2', '9860740002', 3, 'fgdg', 'M', 'zxc', 'qwe', 'sunilthapa'),
 (17421493, 'John', 'Smith', 'David', 'john@example.com', 'adfasf', 'adfasdfg', '3243', 3, 'hhdf', 'M', 'qweqwe', 'zxczx', 'johndavid');
 
 -- --------------------------------------------------------
@@ -247,7 +282,8 @@ CREATE TABLE `timetable` (
 -- Indexes for table `announcement`
 --
 ALTER TABLE `announcement`
-  ADD PRIMARY KEY (`announcement_id`);
+  ADD PRIMARY KEY (`announcement_id`),
+  ADD KEY `staff_announcement_id` (`staffId`);
 
 --
 -- Indexes for table `assignment`
@@ -282,6 +318,12 @@ ALTER TABLE `diary`
   ADD PRIMARY KEY (`diary_id`);
 
 --
+-- Indexes for table `discussion`
+--
+ALTER TABLE `discussion`
+  ADD PRIMARY KEY (`discussion_id`);
+
+--
 -- Indexes for table `module`
 --
 ALTER TABLE `module`
@@ -294,7 +336,8 @@ ALTER TABLE `module`
 --
 ALTER TABLE `patmanagement`
   ADD PRIMARY KEY (`pat_id`),
-  ADD KEY `staff_id` (`staff_id`);
+  ADD KEY `staff_id` (`staffId`),
+  ADD KEY `student_id` (`Stid`);
 
 --
 -- Indexes for table `report`
@@ -330,7 +373,7 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `announcement_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `announcement_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `assignment`
@@ -363,6 +406,12 @@ ALTER TABLE `diary`
   MODIFY `diary_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `discussion`
+--
+ALTER TABLE `discussion`
+  MODIFY `discussion_id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `module`
 --
 ALTER TABLE `module`
@@ -372,7 +421,7 @@ ALTER TABLE `module`
 -- AUTO_INCREMENT for table `patmanagement`
 --
 ALTER TABLE `patmanagement`
-  MODIFY `pat_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `pat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -390,7 +439,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `Stid` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Stid` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17421494;
 
 --
 -- AUTO_INCREMENT for table `timetable`
@@ -403,6 +452,12 @@ ALTER TABLE `timetable`
 --
 
 --
+-- Constraints for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD CONSTRAINT `staff_announcement_id` FOREIGN KEY (`staffId`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `module`
 --
 ALTER TABLE `module`
@@ -413,7 +468,8 @@ ALTER TABLE `module`
 -- Constraints for table `patmanagement`
 --
 ALTER TABLE `patmanagement`
-  ADD CONSTRAINT `staff_pat_id` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `staff_pat_id` FOREIGN KEY (`staffId`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_pat_id` FOREIGN KEY (`Stid`) REFERENCES `student` (`Stid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student`
