@@ -1,17 +1,23 @@
 <?php 
+	require '../../databaseConnect/connectSQL.php';
+	require '../../classes/databaseQuery.php';
 	if (isset($_POST['submit'])) {
-		$staffObj = new QueryDatabase($pdo, 'staff');
+		$title = "Thanks";
+		$patObj = new QueryDatabase($pdo, 'patManagement');
 		unset($_POST['submit']);
 		$record = $_POST;
-		$result = $staffObj->find("staffFirstName", $_POST['tutorfName']);
-		$result1 = $staffObj->find("staffSurName", $_POST['tutorlName']);
-		$getRow = $result->fetch();
-		$getRow1 = $result1->fetch();
-		if($getRow == true && $getRow1 == true){
-			
+		if (isset($_GET['p'])) {
+			$pk = $_GET['p'];
+			$result = $patObj->update($record, $pk);
 		}
 		else{
-			echo "error";
+			$result = $patObj->saveQuery($record);
 		}
+		$content = "<h3>PAT has been successfully added.</h3>";
 	}
+	else{
+		$title = "Error";
+		$content = "Few Errors";
+	}
+	require '../../template/admin/admin-layout.php';
 ?>

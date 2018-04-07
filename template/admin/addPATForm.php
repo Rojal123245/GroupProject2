@@ -2,7 +2,7 @@
     require '../../databaseConnect/connectSQL.php';
 ?>
 <form method="POST" action="add-PAT.php" class="add-form z-depth-2">
-    <h2 class="text-center form-heading z-depth-1-half">Add Personal Tutor</h2>
+    <h2 class="text-center form-heading z-depth-1-half">Add Personal Academic Tutor</h2>
     <div class="form-group">
         <label for="studentOption">Select Student</label>
         <select class="form-control" id="studentOption" name="Stid" >
@@ -35,7 +35,7 @@
     </div>
      
     <div class="form-group text-center">
-        <input type="submit" name="submit" value="Add Module" class="btn btn-primary">
+        <input type="submit" name="submit" value="Assign PAT" class="btn btn-primary">
     </div>
    
 </form>

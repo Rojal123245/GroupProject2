@@ -30,11 +30,11 @@
                     <?php 
                         $dropDown = "Admin Username";
                         $dropDownContent = ["Profile", "Logout"];
-                        if (isset($_SESSION)) {
-                            require '../../functions/dropDownCode.php';
-                        }else{
-                            require '../functions/dropDownCode.php';
-                        }
+                        // if (isset($_SESSION)) {
+                        //     require '../../functions/dropDownCode.php';
+                        // }else{
+                        //     require '../functions/dropDownCode.php';
+                        // }
                         require '../../functions/dropDownCode.php';
                      ?>
                 </li>

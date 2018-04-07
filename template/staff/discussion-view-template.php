@@ -41,15 +41,7 @@ input[name=srch]:focus {
                     </div>';
             }
         ?>
-                        <!-- <div class="panel-body" id="qs">
-                            <a href="#">What is meant by tuples?</a>
-                        </div>
-                        <div class="panel-body" id="qs">
-                            <a href="#">What are the essentials component of schema?</a>
-                        </div>
-                        <div class="panel-body" id="qs">
-                            <a href="#">Meaning of ERD and how is data stored on relational database?</a> -->
-                    </div>
+                </div>
                 </div><br>
                 <div class="panel panel-body">
                     <form method="POST">

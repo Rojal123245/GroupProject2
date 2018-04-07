@@ -50,19 +50,18 @@
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Announcement</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Modules
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="../../public_html/staff/module.php">Module 1</a>
-                        <a class="dropdown-item" href="../../public_html/staff/module.php">Module 2</a>
-                        <a class="dropdown-item" href="../../public_html/staff/module.php">Module 3</a>
-                        <a class="dropdown-item" href="../../public_html/staff/module.php">Module 4</a>
-                        <a class="dropdown-item" href="../../public_html/staff/module.php">Module 5</a>
-                        <a class="dropdown-item" href="../../public_html/staff/module.php">Module 6</a>
+    <?php 
+        $moduleInfo = $module->find('tutor_id', 4503);
+        while($moduleName = $moduleInfo->fetch()){
+            echo '<a class="dropdown-item" href="../../public_html/staff/module.php?id='.$moduleName['module_id'].'">'.$moduleName['moduleName'].'</a>';
+        }
+    ?>
                     </div>
                 </li>
                
@@ -89,27 +88,21 @@
             <div class="announce example z-depth-1-half">
                 <div class="announce-header">
                     <h3>Announcements</h3> 
-                    <div id="announce-cat">
-                        <a href="#" style="border-right:2px groove black; padding-right: 5px;">Administration</a>
-                        <a href="#" style="border-right:2px groove black;padding-right: 5px;">Staffs</a>
-                    </div>
                 </div>
                 <hr>
                 <div class="announce-body">
-                    <div class="announcement">
-                        <h6><strong>Announcement header #1 from administration</strong></h6>
-                        <p>This is an important announcement from the Board of the University .......</p>
-                    </div>
-                    <div class="announcement">
-                        <p>This is an another announcement from the University Management Team to notify bla bla bla bla bla. So please make sure to do that .......</p>
-                    </div>
-                    <div class="announcement">
-                        <p>This is a notice of relatively low priority .......</p>
-                    </div>
-                    <div class="announcement">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
+                    <?php 
+                        $announcementInfo = $announcement->findAll();
+                    while ($announcementFetch = $announcementInfo->fetch())  {
+                        $staffInfo = $staff->find('staffId', $announcementFetch['staffId']);
+                        $staffName = $staffInfo->fetch();
+                        echo '
+                        <div class="announcement">
+                            <h6><strong>'.$announcementFetch['title'].'</strong> by '.$staffName['staffFirstName'].' '.$staffName['staffSurName'].'</h6>
+                            <p>'.$announcementFetch['descript'].' </p></div>
+                        ';
+                    }
+                    ?>
                 </div>
             </div>
             <div class="calender example z-depth-1-half">
@@ -121,11 +114,11 @@
         <div class="modules example z-depth-1-half">
             <div class="modules-header">
                 <h3>My Modules (<?php 
-                    $studentInfo = $student->find('Stid', 1);
-                    $studentFetch = $studentInfo->fetch();
-                    $courseInfo = $course->find('course_id', $studentFetch['currentCoursCode']);
-                    $courseName = $courseInfo->fetch();
-                    echo $courseName['degree'].' '.$courseName['courseName'];
+                    $staffInfo = $staff->find('staffId', 4503);
+                    $staffFetch = $staffInfo->fetch();
+                    $moduleInfo = $module->find('tutor_id', $staffFetch['staffId']);
+                    $moduleName = $moduleInfo->fetch();
+                    echo $moduleName['moduleName'];
 
 
                  ?>)</h3>
@@ -148,38 +141,16 @@
                     <!-- Card body -->
                     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx" >
                         <div class="card-body">
-                            <!-- <div class="module-card example hoverable">
-                                <div class="module-card-header">
-                                    <h4>CSY-2028 <br> Web Programming</h4>
-                                </div>
-                                <div class="module-card-body">
-                                    <p>
-                                        Mark Johnson <br> johnson@email.com <br> 2017/18
-                                    </p>
-                                    <div class="progress" style="margin-bottom: 10px;">
-                                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <a href="../../public_html/staff/module.php" role="button" class="btn btn-primary">Go Here</a>
-                                </div>
-                            </div> -->
 <?php 
-    $moduleInfo = $module->find('course_id', $courseName['course_id']);
-    while($moduleDetail = $moduleInfo->fetch()){
-        $tutorInfo = $staff->find('staffId', $moduleDetail['tutor_id']);
-        $tutorDetail = $tutorInfo->fetch();
+    $moduleInfo = $module->find('tutor_id', $staffFetch['staffId']);
+    while($moduleName = $moduleInfo->fetch()){
         echo '
             <div class="module-card example hoverable">
                 <div class="module-card-header">
-                    <h4>'.$moduleDetail['moduleCode'].' <br> '.$moduleDetail['moduleName'].'</h4>
+                    <h4>'.$moduleName['moduleCode'].' <br> '.$moduleName['moduleName'].'</h4>
                 </div>
                 <div class="module-card-body">
-                    <p>
-                        '.$tutorDetail['staffFirstName'].' '.$tutorDetail['staffSurName'].' <br> '.$tutorDetail['email'].' <br> 2017/18
-                    </p>
-                    <div class="progress" style="margin-bottom: 10px;">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                    </div>
-                    <a href="module.php?id='.$moduleDetail['module_id'].'" role="button" class="btn btn-primary">Go Here</a>
+                    <a href="module.php?id='.$moduleName['module_id'].'" role="button" class="btn btn-primary">Go Here</a>
                 </div>
             </div>
         ';
@@ -209,31 +180,22 @@
             <!-- Discussion Board -->
             <div class="announce example z-depth-1-half discussion" style="width: 55%">
                     <div class="announce-header">
-                        <h3>Discussion Board</h3>                     
+                        <h3>Discussion Board</h3>
                     </div>
                     <hr>
                     <div class="announce-body">
-                        <div class="announcement">
-                            <h6><strong>Q: Lorem ipsum dolor sit amet, consectetur adipisicing elit?</strong></h6>
-                            <p>A: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                        <div class="announcement">
-                            <h6><strong>Q: Lorem ipsum dolor sit amet, consectetur adipisicing elit?</strong></h6>
-                            <p>A: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                        <div class="announcement">
-                            <h6><strong>Q: Lorem ipsum dolor sit amet, consectetur adipisicing elit?</strong></h6>
-                            <p>A: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                        <div class="announcement">
-                            <h6><strong>Q: Lorem ipsum dolor sit amet, consectetur adipisicing elit?</strong></h6>
-                            <p>A: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
+        <?php 
+            $dis = $discussion->findAll();
+            while ($key = $dis->fetch()) {
+                $studentqs = $student->find('Stid', $key['qs_student_id']);
+                $stQs = $studentqs->fetch();
+                echo '<div class="announcement" id="qs">
+                        <h5>'.$key['question'].'</h5>
+                        <p>By: '.$stQs['studentFirstName'].' '.$stQs['studentSurName'].'</p>
+                    </div>';
+            }
+        ?>
+                </div>
                 </div>
             <!-- Discussion Board -->
 

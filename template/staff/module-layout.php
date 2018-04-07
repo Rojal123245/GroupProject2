@@ -75,12 +75,12 @@ switch ($active) {
                         Modules
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="module.php">Module 1</a>
-                        <a class="dropdown-item" href="module.php">Module 2</a>
-                        <a class="dropdown-item" href="module.php">Module 3</a>
-                        <a class="dropdown-item" href="module.php">Module 4</a>
-                        <a class="dropdown-item" href="module.php">Module 5</a>
-                        <a class="dropdown-item" href="module.php">Module 6</a>
+    <?php 
+        $moduleInfo = $module->find('tutor_id', 4503);
+        while($moduleName = $moduleInfo->fetch()){
+            echo '<a class="dropdown-item" href="../../public_html/staff/module.php?id='.$moduleName['module_id'].'">'.$moduleName['moduleName'].'</a>';
+        }
+    ?>
                     </div>
                 </li>
               

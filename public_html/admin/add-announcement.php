@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	require '../../classes/databaseQuery.php';
 	require '../../databaseConnect/connectSQL.php';
 	if (isset($_POST['submit'])) {
@@ -6,6 +7,7 @@
 		$courseObj = new QueryDatabase($pdo, 'announcement');
 		unset($_POST['submit']);
 		$record = $_POST;
+		$record['staffId'] = $_SESSION['adminId'];
 		if (isset($_GET['p'])) {
 			$pk = $_GET['p'];
 			$result = $courseObj->update($record, $pk);

@@ -1,8 +1,6 @@
 <?php 
 	require '../../databaseConnect/connectSQL.php';
-	require '../../classes/databaseQuery.php';
-	// If staff => action add-staff.php
-	// If student => action add-student.php
+	// require '../../classes/databaseQuery.php';
 	$p = "staffId";
 	$query = new QueryDatabase($pdo, "staff");
 ?>
@@ -17,7 +15,8 @@
 				 	echo '<input type="checkbox" onclick="show()">Show Password <br>';
 				}
 			}
-	 		update("staffId", $_SESSION['staffId'], $query);
+	 		// update("staffId", $_SESSION['staffId'], $query);
+	 		update("staffId", 4503, $query);
 	 	?>
  		<input type="submit" name="submit" value="Update" class="btn btn-success">
  	</form>

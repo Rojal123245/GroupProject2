@@ -1,7 +1,8 @@
 <?php 
+$id = $_GET['id'];
 	require '../../databaseConnect/connectSQL.php';
 ?>
-<form method="POST" action="add-announcement.php" enctype="multipart/form-data" class="add-form z-depth-2">
+<form method="POST" action="announcement.php?id=<?php echo $id; ?>" enctype="multipart/form-data" class="add-form z-depth-2">
     <h2 class="text-center form-heading z-depth-1-half">Add Announcement</h2>
     <?php 
         $formData = [["text", "title", "Announcement Title"], ["text", "descript", "Announcement Description"]];

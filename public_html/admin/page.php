@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+	$_SESSION['adminId'] = 4501;
 	require '../../databaseConnect/connectSQL.php';
 	require '../../classes/databaseQuery.php';
 	require '../../classes/table-generate-function.php';
@@ -49,7 +50,7 @@
 	}
 	else if('v'.sha1("Modules") == $table){
 		$templateVars = [
-			'title' => "View Course",
+			'title' => "View Modules",
 			'content' => contentLoadingFunction('../../template/admin/viewModule.php', [])
 		];
 	}

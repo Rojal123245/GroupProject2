@@ -9,12 +9,16 @@
 	}
 </script>
 <?php 
-	// require '../classes/databaseQuery.php';
+	require '../../classes/databaseQuery.php';
 	require '../../databaseConnect/connectSQL.php';
 	$title = "Profile";	
 	$active = 0;	
+	$module = new QueryDatabase($pdo, 'module');
+	$templateVars = [
+		'module' => $module
+];
 	require '../../functions/load-Template-Function.php';
-	$content = contentLoadingFunction('../../template/student/profileViewTemplate.php', []);
+	$content = contentLoadingFunction('../../template/student/profileViewTemplate.php', $templateVars);
 	require '../../template/student/module-layout.php';
 
 	if (isset($_POST['submit'])) {

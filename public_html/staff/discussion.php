@@ -1,7 +1,35 @@
-<div class="tab-pane fade" id="pills-discuss" role="tabpanel" aria-labelledby="pills-discuss-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-            </div>
+<?php 
+require '../../classes/databaseQuery.php';
+require '../../databaseConnect/connectSQL.php';
+require '../../functions/load-Template-Function.php';
+$title = "Discussion Panel";
+$active = 4;
+$module = new QueryDatabase($pdo, 'module');
+$discussion = new QueryDatabase($pdo, 'discussion');
+$student = new QueryDatabase($pdo, 'student');
+$staff = new QueryDatabase($pdo, 'staff');
+$templateVars = [
+	'discussion' => $discussion,
+	'staff' => $staff,
+	'student' => $student
+];
+$content = contentLoadingFunction('../../template/staff/discussion-view-template.php', $templateVars);
+if (isset($_POST['submit'])) {
+		$title = "Thanks";		
+		$discussion = new QueryDatabase($pdo, 'discussion');
+		unset($_POST['submit']);
+		$record = $_POST;
+		// $record['qs_student_id'] = $_SESSION['Stid'];
+		$record['qs_student_id'] = 17421492;
+		$result = $discussion->saveQuery($record);
+		$content = "<h3>Thanks for your valuable query.</h3>";
+		
+	}
+$templateVars = [
+'title' => $title,
+'active' => $active,
+'module' => $module,
+'content' => $content
+];
+echo contentLoadingFunction('../../template/staff/module-layout.php', $templateVars);
+?>

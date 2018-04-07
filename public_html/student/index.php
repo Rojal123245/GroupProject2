@@ -7,13 +7,16 @@
 	$course = new QueryDatabase($pdo, 'course');
 	$module = new QueryDatabase($pdo, 'module');
 	$staff = new QueryDatabase($pdo, 'staff');
+	$announcement = new QueryDatabase($pdo, 'announcement');
+	$discussion = new QueryDatabase($pdo, 'discussion');
 	$templateVars = [
 		'title' => $title,
 		'course' => $course,
 		'student' => $student,
 		'module' => $module,
-		'staff' => $staff
+		'staff' => $staff,
+		'discussion' => $discussion,
+		'announcement' => $announcement
 	];
-	// require '../../template/student/student_layout.php';
 	echo contentLoadingFunction('../../template/student/student_layout.php', $templateVars);
 ?>

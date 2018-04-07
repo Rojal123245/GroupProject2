@@ -9,14 +9,17 @@
 	}
 </script>
 <?php 
-	// require '../classes/databaseQuery.php';
 	require '../../databaseConnect/connectSQL.php';
 	$title = "Profile";	
 	$active = 0;	
+	require '../../classes/databaseQuery.php';
 	require '../../functions/load-Template-Function.php';
-	$content = contentLoadingFunction('../../template/staff/profileViewTemplate.php', []);
+	$module = new QueryDatabase($pdo, 'module');
+	$templateVars = [
+		'module' => $module
+];
+	$content = contentLoadingFunction('../../template/staff/profileViewTemplate.php', $templateVars);
 	require '../../template/staff/module-layout.php';
-
 	if (isset($_POST['submit'])) {
 		$title = "Thanks";
 		$staffObj = new QueryDatabase($pdo, 'staff');
