@@ -68,9 +68,10 @@
                         <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="../../public_html/student/profile.php">Profile</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="profile.php?id=<?php echo $_GET['id']; ?>">Profile</a>
+                        <a class="dropdown-item" href="logout.php">Logout</a>
+                    </div>                    </div>
                 </li>
             </ul>
                 <!-- Links -->
@@ -207,10 +208,12 @@
             while ($key = $dis->fetch()) {
                 $studentqs = $student->find('Stid', $key['qs_student_id']);
                 $stQs = $studentqs->fetch();
-                echo '<div class="announcement" id="qs">
+                if ($key['question'] != '') {
+                    echo '<div class="announcement" id="qs">
                         <h5>'.$key['question'].'</h5>
                         <p>By: '.$stQs['studentFirstName'].' '.$stQs['studentSurName'].'</p>
                     </div>';
+                }
             }
         ?>
                 

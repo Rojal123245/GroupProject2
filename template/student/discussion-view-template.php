@@ -1,5 +1,5 @@
 <style type="text/css">
-   input[name=srch] {
+   input[name=question] {
     width: 200px;
     background-color: #fff;
     box-sizing: border-box;
@@ -12,8 +12,7 @@
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
-
-input[name=srch]:focus {
+input[name=question]:focus {
     width: 80%;
 } 
 </style>
@@ -23,7 +22,10 @@ input[name=srch]:focus {
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="right-search">
-                        <input type="text" name="srch" placeholder="Search Question">
+                        <form method="POST" action="search.php?id=<?php echo $_GET['id']; ?>">
+                            <input type="text" name="question" placeholder="Search Question">
+                            <input type="submit" name="search" value="Search" class="btn btn-info">
+                        </form>
                     </div>
                     <a class="btn btn-primary" href="#askForm">Ask question?</a>
                 </div>
@@ -35,10 +37,12 @@ input[name=srch]:focus {
             while ($key = $dis->fetch()) {
                 $studentqs = $student->find('Stid', $key['qs_student_id']);
                 $stQs = $studentqs->fetch();
-                echo '<div class="panel-body" id="qs">
-                        <a href="">'.$key['question'].'</a>
-                        <p>By: '.$stQs['studentFirstName'].' '.$stQs['studentSurName'].'</p>
-                    </div>';
+                if ($key['question'] != '' && $key['module_id'] == $_GET['id']) {
+                        echo '<div class="panel-body" id="qs">
+                            <a href="search.php?id='.$_GET['id'].'&qs='.$key['discussion_id'].'">'.$key['question'].'</a>
+                            <p>By: '.$stQs['studentFirstName'].' '.$stQs['studentSurName'].'</p>
+                        </div>';
+                    }    
             }
         ?>
                         <!-- <div class="panel-body" id="qs">

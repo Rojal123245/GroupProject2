@@ -10,7 +10,7 @@
 		$courseObj = new QueryDatabase($pdo, 'announcement');
 		unset($_POST['submit']);
 		$record = $_POST;
-		$record['staffId'] = $_SESSION['staffId'];
+		$record['staffId'] = $_SESSION['StaffID'];
 		if (isset($_GET['p'])) {
 			$pk = $_GET['p'];
 			$result = $courseObj->update($record, $pk);

@@ -1,5 +1,4 @@
 <?php 
-session_start();
 require '../../classes/databaseQuery.php';
 require '../../databaseConnect/connectSQL.php';
 require '../../functions/load-Template-Function.php';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2018 at 05:30 PM
+-- Generation Time: Apr 08, 2018 at 06:24 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -127,16 +127,23 @@ CREATE TABLE `discussion` (
   `qs_student_id` int(9) NOT NULL,
   `question` varchar(2000) NOT NULL,
   `staff_id` int(9) DEFAULT NULL,
-  `ans_student_id` int(9) NOT NULL,
-  `ans` varchar(2000) NOT NULL
+  `ans_student_id` int(9) DEFAULT NULL,
+  `ans` varchar(50000) NOT NULL,
+  `dis_ans_id` int(9) DEFAULT NULL,
+  `module_id` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `discussion`
 --
 
-INSERT INTO `discussion` (`discussion_id`, `qs_student_id`, `question`, `staff_id`, `ans_student_id`, `ans`) VALUES
-(1, 17421492, 'What is machine learning?', 0, 0, '');
+INSERT INTO `discussion` (`discussion_id`, `qs_student_id`, `question`, `staff_id`, `ans_student_id`, `ans`, `dis_ans_id`, `module_id`) VALUES
+(1, 17421492, 'What is machine learning?', 0, 0, '', NULL, 2),
+(2, 17421493, 'What is tuple?', NULL, 0, '', NULL, 2),
+(5, 17421492, '', NULL, 17421493, 'Machine learning is an application of AI that learns itself. This eliminates hard-core coding.', 1, 2),
+(7, 17421492, 'What is meant by canvas?', NULL, NULL, '', NULL, 3),
+(17, 17421493, '', NULL, 17421492, 'Tuple is a set of data.', 2, 2),
+(19, 17421492, '', 4503, NULL, 'Canvas is a frame.', 7, 3);
 
 -- --------------------------------------------------------
 
@@ -227,7 +234,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staffId`, `staffFirstName`, `staffMiddleName`, `staffSurName`, `email`, `address`, `phone`, `role`, `specialistSubject`, `status`, `dormacyReason`, `gender`, `pwd`) VALUES
-(4501, 'Ganesh', 'Kumar', 'Khatri', 'ganesh_khatri02@outlook.com', 'Kathmandu', '981234454', 'admin', 'Web Programming', 'Married', 'Don\'t know', 'M', 'ganeshkhatri'),
+(4501, 'Ganesh', 'Kumar', 'Khatri', 'ganesh_khatri02@outlook.com', 'Kathmandu', '981233545', 'admin', 'Web Programming', 'Married', 'Don\'t know', 'M', 'ganeshkhatri'),
 (4502, 'Raj', 'Kumar', 'Phagami', 'raju@woodland.uni.co.uk', 'asdf', '6846516', 'Teacher', 'Java Programming', 'live', 'none', 'M', 'rajphagami'),
 (4503, 'Sunil', '', 'Thapa', 'sunil.thapa@woodland.uni.co.uk', 'Silicon Valley', '9860740002', 'Teacher', 'Artificial Intelligence', 'live', 'none', 'M', 'sunilthapa'),
 (4504, 'Surya', 'Pratap', 'Limbu', 'surya.pratap@woodland.ac.uk', 'Thali', '9840339562', 'Teacher', 'Software Engineering', 'live', 'none', 'M', 'suryalimbu'),
@@ -262,7 +269,7 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`Stid`, `studentFirstName`, `studentMiddleName`, `studentSurName`, `email`, `addressTermTime`, `addressNonTT`, `phone`, `currentCoursCode`, `entryQualification`, `gender`, `status`, `dormacyReason`, `pwd`) VALUES
 (17421492, 'Sunil', '', 'Thapa', 'sunil.thapa16@my.northampton.ac.uk', 'Nayabazar', 'apt2', '9860740002', 3, 'fgdg', 'M', 'zxc', 'qwe', 'sunilthapa'),
-(17421493, 'John', 'Smith', 'David', 'john@example.com', 'adfasf', 'adfasdfg', '3243', 3, 'hhdf', 'M', 'qweqwe', 'zxczx', 'johndavid');
+(17421493, 'John', 'Smith', 'David', 'john@example.com', 'adfasf', 'adfasdfg', '981234324', 3, 'hhdf', 'M', 'qweqwe', 'zxczx', 'johndavid');
 
 -- --------------------------------------------------------
 
@@ -409,7 +416,7 @@ ALTER TABLE `diary`
 -- AUTO_INCREMENT for table `discussion`
 --
 ALTER TABLE `discussion`
-  MODIFY `discussion_id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `discussion_id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `module`

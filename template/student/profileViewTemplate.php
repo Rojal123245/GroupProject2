@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	require '../../databaseConnect/connectSQL.php';
 	// require '../../classes/databaseQuery.php';
 	$p = "Stid";
@@ -15,7 +16,7 @@
 				 	echo '<input type="checkbox" onclick="show()">Show Password <br>';
 				}
 			}
-	 		update("Stid", 17421492, $query);
+	 		update("Stid", $_SESSION['StudentID'], $query);
 	 	?>
  		<input type="submit" name="submit" value="Update" class="btn btn-success">
  	</form>

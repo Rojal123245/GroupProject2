@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
 require '../../classes/databaseQuery.php';
 require '../../databaseConnect/connectSQL.php';
 require '../../functions/load-Template-Function.php';
@@ -19,8 +19,8 @@ if (isset($_POST['submit'])) {
 		$discussion = new QueryDatabase($pdo, 'discussion');
 		unset($_POST['submit']);
 		$record = $_POST;
-		// $record['qs_student_id'] = $_SESSION['Stid'];
-		$record['qs_student_id'] = 17421492;
+		$record['staff_id'] = $_SESSION['StaffID'];
+		$record['module_id'] = $_GET['id'];
 		$result = $discussion->saveQuery($record);
 		$content = "<h3>Thanks for your valuable query.</h3>";
 		
@@ -31,5 +31,5 @@ $templateVars = [
 'module' => $module,
 'content' => $content
 ];
-echo contentLoadingFunction('../../template/staff/module-layout.php', $templateVars);
+echo contentLoadingFunction('../../template/student/module-layout.php', $templateVars);
 ?>

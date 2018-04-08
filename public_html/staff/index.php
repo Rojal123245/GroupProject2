@@ -1,5 +1,4 @@
 <?php 
-	$_SESSION['staffId'] = 4503;
 	require '../../classes/databaseQuery.php';
 	require '../../databaseConnect/connectSQL.php';
 	require '../../functions/load-Template-Function.php';
