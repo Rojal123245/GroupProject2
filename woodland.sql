@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2018 at 06:24 PM
+-- Generation Time: Apr 09, 2018 at 08:25 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -52,8 +52,21 @@ INSERT INTO `announcement` (`announcement_id`, `title`, `descript`, `staffId`) V
 --
 
 CREATE TABLE `assignment` (
-  `assignment_id` int(10) NOT NULL
+  `assignment_id` int(10) NOT NULL,
+  `filePath` varchar(2000) NOT NULL,
+  `module_id` int(9) NOT NULL,
+  `descrip` varchar(2000) NOT NULL,
+  `link` varchar(3) NOT NULL DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignment`
+--
+
+INSERT INTO `assignment` (`assignment_id`, `filePath`, `module_id`, `descrip`, `link`) VALUES
+(1, 'assignment/CSY2030_assignment_1718.docx', 1, 'Deadline is 22nd April 2018.', 'yes'),
+(4, 'assignment/2340086.pdf', 1, 'Rubrics for assignment 1.', 'no'),
+(7, 'assignment/csy1020Ass2DEMO.docx', 3, 'This is assessment description. Your deadline is 22nd Apr 2018.', 'yes');
 
 -- --------------------------------------------------------
 
@@ -274,6 +287,30 @@ INSERT INTO `student` (`Stid`, `studentFirstName`, `studentMiddleName`, `student
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `submit`
+--
+
+CREATE TABLE `submit` (
+  `submission_id` int(9) NOT NULL,
+  `student_id` int(9) NOT NULL,
+  `file_Path` varchar(2555) NOT NULL,
+  `assignment_id` int(9) NOT NULL,
+  `grade` varchar(20) NOT NULL,
+  `staff_id` int(9) NOT NULL,
+  `descrip` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `submit`
+--
+
+INSERT INTO `submit` (`submission_id`, `student_id`, `file_Path`, `assignment_id`, `grade`, `staff_id`, `descrip`) VALUES
+(1, 17421492, 'submit/report.docx', 1, 'A', 4501, 'This is submission.'),
+(3, 17421492, 'submit/report.docx', 7, '', 0, 'This is report.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `timetable`
 --
 
@@ -367,6 +404,12 @@ ALTER TABLE `student`
   ADD KEY `currentCoursCode` (`currentCoursCode`);
 
 --
+-- Indexes for table `submit`
+--
+ALTER TABLE `submit`
+  ADD PRIMARY KEY (`submission_id`);
+
+--
 -- Indexes for table `timetable`
 --
 ALTER TABLE `timetable`
@@ -386,7 +429,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignment_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `assignment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `attendance`
@@ -447,6 +490,12 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `student`
   MODIFY `Stid` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17421494;
+
+--
+-- AUTO_INCREMENT for table `submit`
+--
+ALTER TABLE `submit`
+  MODIFY `submission_id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `timetable`

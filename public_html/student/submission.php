@@ -3,36 +3,34 @@ session_start();
 	require '../../classes/databaseQuery.php';
 	require '../../databaseConnect/connectSQL.php';
 require '../../functions/load-Template-Function.php';
-$title = "Assignment";
+$title = "Submit";
 $active = 3;
 $assignment = new QueryDatabase($pdo, 'assignment');
 $submit = new QueryDatabase($pdo, 'submit');
-$student = new QueryDatabase($pdo, 'student'); 
 $templateVars = [
 	'assignment' => $assignment,
-	'submit' => $submit,
-	'student' => $student
+	'submit' => $submit
 ];
-$content = contentLoadingFunction('../../template/staff/assignment-view-template.php', $templateVars);
+$content = contentLoadingFunction('../../template/student/assignment-view-template.php', $templateVars);
 	$module = new QueryDatabase($pdo, 'module');
 	if(isset($_POST["submit"])) {
 		unset($_POST['submit']);
-		$assignmentDir = "../../assignment/";
-		$module_id = $_GET['id'];
+		$assignmentDir = "../../submit/";
+		$student_id = $_SESSION['StudentID'];
 		//Concatenate image name with directory
 		$file = $assignmentDir . basename($_FILES["upload"]["name"]);
-		$fileDir = "assignment/".basename($_FILES["upload"]["name"]);
+		$fileDir = "submit/".basename($_FILES["upload"]["name"]);
 		//Copy into newImage folder 
 	    copy(($_FILES["upload"]["tmp_name"]), $file);
 	    //Insert file name into database
-	    $assignmentQuery = $pdo->prepare("INSERT INTO assignment(filePath, module_id, descrip) VALUES (:fileDir, :module_id, :descrip)");
+	    $assignmentQuery = $pdo->prepare("INSERT INTO submit(file_Path, student_id, descrip, assignment_id) VALUES (:fileDir, :student_id, :descrip, :assignment_id)");
 	    $criteria = [
 	    	'fileDir' => $fileDir,
-	    	'module_id' => $_POST['module_id'],
-	    	'descrip' => $_POST['descrip']
+	    	'student_id' => $student_id,
+	    	'descrip' => $_POST['descrip'],
+	    	'assignment_id' => $_POST['assignment_id']
 	    ];
 	 	$insert = $assignmentQuery->execute($criteria);
-	 	header('Refresh:0');
 	}
 $templateVars = [
   'title' => $title,
@@ -40,5 +38,5 @@ $templateVars = [
 		'module' => $module,
   'content' => $content
 ];
-echo contentLoadingFunction('../../template/staff/module-layout.php', $templateVars);
+echo contentLoadingFunction('../../template/student/module-layout.php', $templateVars);
 ?>
