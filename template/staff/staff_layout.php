@@ -57,9 +57,11 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
     <?php 
-        $moduleInfo = $module->find('tutor_id', 4503);
+    $moduleId;
+        $moduleInfo = $module->find('tutor_id', $_SESSION['StaffID']);
         while($moduleName = $moduleInfo->fetch()){
             echo '<a class="dropdown-item" href="../../public_html/staff/module.php?id='.$moduleName['module_id'].'">'.$moduleName['moduleName'].'</a>';
+            $moduleId = $moduleName['module_id'];
         }
     ?>
                     </div>
@@ -69,10 +71,9 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="profile.php?id=<?php echo $_GET['id']; ?>">Profile</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="profile.php?id=<?php if(isset($_GET['id'])) echo $_GET['id']; else echo $moduleId;?>">Profile</a>
                         <a class="dropdown-item" href="logout.php">Logout</a>
-                    </div>
                     </div>
                 </li>
             </ul>
@@ -115,7 +116,7 @@
         <div class="modules example z-depth-1-half">
             <div class="modules-header">
                 <h3>My Modules (<?php 
-                    $staffInfo = $staff->find('staffId', 4503);
+                    $staffInfo = $staff->find('staffId', $_SESSION['StaffID']);
                     $staffFetch = $staffInfo->fetch();
                     $moduleInfo = $module->find('tutor_id', $staffFetch['staffId']);
                     $moduleName = $moduleInfo->fetch();

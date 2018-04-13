@@ -68,10 +68,9 @@
                         <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="profile.php?id=<?php echo $_GET['id']; ?>">Profile</a>
+                        <a class="dropdown-item" href="profile.php?id=<?php if(isset($_GET['id'])) echo $_GET['id']; else echo 1; ?>">Profile</a>
                         <a class="dropdown-item" href="logout.php">Logout</a>
-                    </div>                    </div>
+                    </div>
                 </li>
             </ul>
                 <!-- Links -->

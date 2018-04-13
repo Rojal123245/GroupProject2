@@ -13,7 +13,6 @@ $module = new QueryDatabase($pdo, 'module');
 		$ass = $submit->update($_POST, 'assignment_id');
 		$content = "Grade Given";
 	}
-print_r($_POST);
 $templateVars = [
   'title' => $title,
   'active' => $active,
