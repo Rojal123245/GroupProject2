@@ -33,6 +33,12 @@
             ?>
         </select>
     </div>
+    <?php 
+        $formData = [["text", "tutorialSummary","Tutorial Summary"], ["date", "meetingDate", "Meeting Date"]];
+        $getRow = [];
+        require '../../functions/form-generate-function.php';
+
+     ?>
      
     <div class="form-group text-center">
         <input type="submit" name="submit" value="Assign PAT" class="btn btn-primary">
