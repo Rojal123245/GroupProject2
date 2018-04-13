@@ -2,7 +2,7 @@
 	require '../../databaseConnect/connectSQL.php';
 	$page = $_GET['t'];
 	$table = new GenerateTableClass();
-	$table->settableHeadingToTable(["Id", "Tutor", "Student", "Delete"]);
+	$table->settableHeadingToTable(["Id", "Tutor", "Student","Tutorial Summary","Meeting Date", "Delete"]);
 	$query = new QueryDatabase($pdo, "patManagement");
 	$queryStudent = new QueryDatabase($pdo, "student");
 	$queryStaff = new QueryDatabase($pdo, "staff");
