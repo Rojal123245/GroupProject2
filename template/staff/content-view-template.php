@@ -31,7 +31,11 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week2/">Lecture Slides</a> <br>
+                      <?php $weekvalue = 'Week2'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
+                         
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -42,7 +46,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week3/">Lecture Slides</a> <br>
+                         <?php $weekvalue = 'Week3'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -53,7 +60,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week4/">Lecture Slides</a> <br>
+                           <?php $weekvalue = 'Week4'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -64,7 +74,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week5/">Lecture Slides</a> <br>
+                            <?php $weekvalue = 'Week5'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -75,7 +88,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week6/">Lecture Slides</a> <br>
+                         <?php $weekvalue = 'Week6'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -86,7 +102,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week7/">Lecture Slides</a> <br>
+                           <?php $weekvalue = 'Week7'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -97,7 +116,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week8/">Lecture Slides</a> <br>
+                           <?php $weekvalue = 'Week8'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -108,7 +130,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week9/">Lecture Slides</a> <br>
+                           <?php $weekvalue = 'Week9'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -119,7 +144,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week10/">Lecture Slides</a> <br>
+                           <?php $weekvalue = 'Week10'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -132,7 +160,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week11/">Lecture Slides</a> <br>
+                            <?php $weekvalue = 'Week11'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
@@ -143,7 +174,10 @@
                       <h6>Description / Objectives</h6>
                       <hr>
                       <p>
-                          <a href="../../files/Week12/">Lecture Slides</a> <br>
+                            <?php $weekvalue = 'Week12'; 
+
+
+                          echo' <a href="../../controllers/display-pdf-link.php?wid=' .$weekvalue .'">Lecture Slides</a>'; ?><br>
                           <a href="#">Tutorial Activities</a> <br>
                           <a href="#">Sample Programs</a> <br>
                           <a href="#">Extras</a> <br>
