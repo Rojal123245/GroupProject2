@@ -52,7 +52,7 @@
                     <ul class="nav flex-column">
                         <li><a href="index.php">Dashboard</a></li>
                         <?php 
-                            $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Attendance Records", "Concern Letter", "Report", "Time Table Management", "Diary Management", "Announcement"];
+                            $sidebar = ["Student", "Staff", "Courses", "Modules", "Personal Tutor Management", "Attendance Records", "Concern Letter", "Report", "Time Table Management", "Announcement"];
                         //     if (isset($_SESSION)) {
                         //     require '../../functions/listGenerate.php';
                         // }else{

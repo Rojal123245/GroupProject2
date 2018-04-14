@@ -1,7 +1,7 @@
 <?php
 	require '../../databaseConnect/connectSQL.php';
 	$table = new GenerateTableClass();
-	$table->settableHeadingToTable(["Id", "Report Date", "Cause Of Report", "Meeting Deadline", "Complained By"]);
+	$table->settableHeadingToTable(["Id", "Report Date", "Cause Of Report", "Meeting Deadline", "Complained By", "Student Email"]);
 	$query = new QueryDatabase($pdo, "concernletter");
 	$stmt = $query->findAll();
 	while ($key = $stmt->fetch(PDO::FETCH_ASSOC)) {

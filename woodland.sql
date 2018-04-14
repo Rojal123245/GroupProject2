@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2018 at 08:25 AM
+-- Generation Time: Apr 14, 2018 at 06:54 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -122,16 +122,6 @@ INSERT INTO `course` (`course_id`, `courseName`, `degree`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `diary`
---
-
-CREATE TABLE `diary` (
-  `diary_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `discussion`
 --
 
@@ -195,16 +185,17 @@ INSERT INTO `module` (`module_id`, `course_id`, `moduleName`, `level`, `pts`, `a
 CREATE TABLE `patmanagement` (
   `pat_id` int(10) NOT NULL,
   `staffId` int(10) NOT NULL,
-  `Stid` int(9) DEFAULT NULL
+  `Stid` int(9) DEFAULT NULL,
+  `tutorialSummary` varchar(200) NOT NULL,
+  `meetingDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `patmanagement`
 --
 
-INSERT INTO `patmanagement` (`pat_id`, `staffId`, `Stid`) VALUES
-(2, 4501, 17421492),
-(3, 4502, 17421493);
+INSERT INTO `patmanagement` (`pat_id`, `staffId`, `Stid`, `tutorialSummary`, `meetingDate`) VALUES
+(1, 4501, 17421492, 'for kafef', '2018-04-02');
 
 -- --------------------------------------------------------
 
@@ -315,8 +306,22 @@ INSERT INTO `submit` (`submission_id`, `student_id`, `file_Path`, `assignment_id
 --
 
 CREATE TABLE `timetable` (
-  `timetable_id` int(10) NOT NULL
+  `timetable_id` int(10) NOT NULL,
+  `tutorId` int(9) NOT NULL,
+  `moduleId` int(9) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `roomNo` int(5) NOT NULL,
+  `day` varchar(20) NOT NULL,
+  `level` int(5) NOT NULL,
+  `lectureOrTutorial` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`timetable_id`, `tutorId`, `moduleId`, `time`, `roomNo`, `day`, `level`, `lectureOrTutorial`) VALUES
+(1, 4501, 1, '8:10', 102, 'Sunday', 5, 'turorial');
 
 --
 -- Indexes for dumped tables
@@ -354,12 +359,6 @@ ALTER TABLE `course`
   ADD PRIMARY KEY (`course_id`),
   ADD KEY `course_id` (`course_id`),
   ADD KEY `course_id_2` (`course_id`);
-
---
--- Indexes for table `diary`
---
-ALTER TABLE `diary`
-  ADD PRIMARY KEY (`diary_id`);
 
 --
 -- Indexes for table `discussion`
@@ -413,7 +412,9 @@ ALTER TABLE `submit`
 -- Indexes for table `timetable`
 --
 ALTER TABLE `timetable`
-  ADD PRIMARY KEY (`timetable_id`);
+  ADD PRIMARY KEY (`timetable_id`),
+  ADD KEY `moduleId` (`moduleId`),
+  ADD KEY `fk_s_timetable` (`tutorId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -450,12 +451,6 @@ ALTER TABLE `course`
   MODIFY `course_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `diary`
---
-ALTER TABLE `diary`
-  MODIFY `diary_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `discussion`
 --
 ALTER TABLE `discussion`
@@ -471,7 +466,7 @@ ALTER TABLE `module`
 -- AUTO_INCREMENT for table `patmanagement`
 --
 ALTER TABLE `patmanagement`
-  MODIFY `pat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -501,7 +496,7 @@ ALTER TABLE `submit`
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `timetable_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `timetable_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -532,6 +527,13 @@ ALTER TABLE `patmanagement`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `course_student_id` FOREIGN KEY (`currentCoursCode`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD CONSTRAINT `fk_m_timetable` FOREIGN KEY (`moduleId`) REFERENCES `module` (`module_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_s_timetable` FOREIGN KEY (`tutorId`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

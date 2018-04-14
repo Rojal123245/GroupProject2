@@ -58,10 +58,14 @@
                   echo 'Assignment File: <br>';
                   echo '<a href="../../'.$assignRow['file_Path'].'" target="_blank">'.$assignRow['file_Path'].'</a><br>';
                   echo 'Description: ';
-                  echo '<p>'.$assignRow['descrip'].' By: '.$st['studentFirstName'].' '.$st['studentSurName'].'</p>
-                  <form method="POST" action="grade.php?id='.$_GET['id'].'">
+                  echo '<p>'.$assignRow['descrip'].' By: '.$st['studentFirstName'].' '.$st['studentSurName'].'</p>';
+                  if (isset($assignRow['grade'])) {
+                    echo 'Grade given: '.$assignRow['grade'];
+                  }
+                  echo '<form method="POST" action="grade.php?id='.$_GET['id'].'">
                     <input type="hidden" name="assignment_id" value="'.$assignRow['assignment_id'].'">
-                    <label>Give Grade: </label>
+                    ';
+                  echo '<label>Give Grade: </label>
                     <select name="grade">
                       <option value="A">A</option>
                       <option value="B">B</option>
