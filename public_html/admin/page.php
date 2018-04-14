@@ -96,6 +96,32 @@
 			'content' => contentLoadingFunction('../../template/admin/viewAnnouncement.php', [])
 		];
 	}
+	else if('a'.sha1("Report") == $table){
+		$templateVars = [
+			'title' => "Add Report",
+			'content' => contentLoadingFunction('../../template/admin/createReport.php', [])
+		];
+	}
+	else if('v'.sha1("Report") == $table){
+		$templateVars = [
+			'title' => "view Report",
+			'content' => contentLoadingFunction('../../template/admin/viewReport.php', [])
+		];
+	}
+	else if('a'.sha1("Time Table Management") == $table){
+		$templateVars = [
+			'title' => "Add time table",
+			'content' => contentLoadingFunction('../../template/admin/createTimeTable.php', [])
+		];
+	}
+	else if('v'.sha1("Time Table Management") == $table){
+		$templateVars = [
+			'title' => "view time table",
+			'content' => contentLoadingFunction('../../template/admin/viewTimeTable.php', [])
+		];
+	}
+	
+	
 	$html = contentLoadingFunction('../../template/admin/admin-layout.php', $templateVars);
 	echo $html;
 ?>
