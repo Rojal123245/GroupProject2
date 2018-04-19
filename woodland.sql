@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2018 at 01:20 PM
+-- Generation Time: Apr 19, 2018 at 03:27 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -89,8 +89,17 @@ CREATE TABLE `attendance` (
   `week9` varchar(3) DEFAULT NULL,
   `week10` varchar(3) DEFAULT NULL,
   `week11` varchar(3) DEFAULT NULL,
-  `week12` varchar(3) DEFAULT NULL
+  `week12` varchar(3) DEFAULT NULL,
+  `totalDays` int(10) NOT NULL DEFAULT '60'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`attendance_id`, `student_id`, `module_id`, `week1`, `week2`, `week3`, `week4`, `week5`, `week6`, `week7`, `week8`, `week9`, `week10`, `week11`, `week12`, `totalDays`) VALUES
+(23, 17421492, 1, '4', '5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 60),
+(24, 17421493, 1, '3', '4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 60);
 
 -- --------------------------------------------------------
 
@@ -488,7 +497,7 @@ ALTER TABLE `assignment`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `attendance_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `attendance_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `concernletter`

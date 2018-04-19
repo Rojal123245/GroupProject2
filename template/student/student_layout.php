@@ -110,7 +110,7 @@
         <div class="modules example z-depth-1-half">
             <div class="modules-header">
                 <h3>My Modules (<?php 
-                    $studentInfo = $student->find('Stid', 17421492);
+                    $studentInfo = $student->find('Stid', $_SESSION['StudentID']);
                     $studentFetch = $studentInfo->fetch();
                     $courseInfo = $course->find('course_id', $studentFetch['currentCoursCode']);
                     $courseName = $courseInfo->fetch();
@@ -137,22 +137,10 @@
                     <!-- Card body -->
                     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx" >
                         <div class="card-body">
-                            <!-- <div class="module-card example hoverable">
-                                <div class="module-card-header">
-                                    <h4>CSY-2028 <br> Web Programming</h4>
-                                </div>
-                                <div class="module-card-body">
-                                    <p>
-                                        Mark Johnson <br> johnson@email.com <br> 2017/18
-                                    </p>
-                                    <div class="progress" style="margin-bottom: 10px;">
-                                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
-                                    <a href="../../public_html/staff/module.php" role="button" class="btn btn-primary">Go Here</a>
-                                </div>
-                            </div> -->
 <?php 
     $moduleInfo = $module->find('course_id', $courseName['course_id']);
+    $attendanceInfo = $attendance->find('student_id', $_SESSION['StudentID']);
+    $attendanceDetail = $attendanceInfo->fetch();
     while($moduleDetail = $moduleInfo->fetch()){
         $tutorInfo = $staff->find('staffId', $moduleDetail['tutor_id']);
         $tutorDetail = $tutorInfo->fetch();
@@ -165,13 +153,25 @@
                     <p>
                         '.$tutorDetail['staffFirstName'].' '.$tutorDetail['staffSurName'].' <br> '.$tutorDetail['email'].' <br> 2017/18
                     </p>
-                    <div class="progress" style="margin-bottom: 10px;">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                    </div>
                     <a href="module.php?id='.$moduleDetail['module_id'].'" role="button" class="btn btn-primary">Go Here</a>
-                </div>
-            </div>
+                </div><hr>
         ';
+        if($attendanceDetail['module_id'] == $moduleDetail['module_id']){
+            $presentDays = 0;
+            for ($i=1; $i < 13; $i++) { 
+                $presentDays = $presentDays + $attendanceDetail['week'.$i]; 
+            }
+            $presentDays = ($presentDays/$attendanceDetail['totalDays']) * 100;
+            echo 'Attendance Bar:
+                    <div class="progress" style="margin-bottom: 10px;">
+                        <div class="progress-bar" role="progressbar" style="width: '.$presentDays.'%;display:inline-flex;flex-direction:row" aria-valuenow="'.$presentDays.'" aria-valuemin="0" aria-valuemax="100">'.round($presentDays).'%
+                        </div>
+                    </div>
+                </div>';
+        }
+        else{
+            echo 'Attendance not taken yet.</div>';  
+        }
     }
 ?>
                             

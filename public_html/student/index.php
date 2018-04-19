@@ -9,6 +9,7 @@
 	$staff = new QueryDatabase($pdo, 'staff');
 	$announcement = new QueryDatabase($pdo, 'announcement');
 	$discussion = new QueryDatabase($pdo, 'discussion');
+	$attendance = new QueryDatabase($pdo, 'attendance');
 	$templateVars = [
 		'title' => $title,
 		'course' => $course,
@@ -16,7 +17,8 @@
 		'module' => $module,
 		'staff' => $staff,
 		'discussion' => $discussion,
-		'announcement' => $announcement
+		'announcement' => $announcement,
+		'attendance' => $attendance
 	];
 	echo contentLoadingFunction('../../template/student/student_layout.php', $templateVars);
 ?>
