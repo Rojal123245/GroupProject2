@@ -8,9 +8,9 @@
 	$query2 = new QueryDatabase($pdo, "module");
 	$stmt=$query->findAll();
 	while ($key = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		$stmt1 = $query1->findAll('Stid', $key['student_id']);
+		$stmt1 = $query1->find('Stid', $key['student_id']);
 		$st = $stmt1->fetch();
-		$stmt2 = $query2->findAll('module_id', $key['module_id']);
+		$stmt2 = $query2->find('module_id', $key['module_id']);
 		$st1 = $stmt2->fetch();
 		
 		$key['student_id'] = $st['studentFirstName']. ' ' .$st['studentSurName'];
