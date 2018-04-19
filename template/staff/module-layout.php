@@ -17,6 +17,9 @@ switch ($active) {
    case '4':
     $activeStatus4 = "active";
     break;
+   case '5':
+    $activeStatus5 = "active";
+    break;
   
   default:
     $activeStatus0 = "active";
@@ -120,6 +123,9 @@ switch ($active) {
             
               <li class="nav-item">
                 <a class="nav-link <?php echo $activeStatus4; ?>" id="pills-discuss-tab" href="discussion.php?id=<?php echo $_GET['id']; ?>" role="tab">Discussion Panel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <?php echo $activeStatus5; ?>" id="pills-discuss-tab" href="attendance.php?id=<?php echo $_GET['id']; ?>" role="tab">Attendance</a>
               </li>
             
             </ul>

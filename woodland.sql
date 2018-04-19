@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2018 at 06:54 AM
+-- Generation Time: Apr 19, 2018 at 01:20 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -75,7 +75,21 @@ INSERT INTO `assignment` (`assignment_id`, `filePath`, `module_id`, `descrip`, `
 --
 
 CREATE TABLE `attendance` (
-  `attendance_id` int(10) NOT NULL
+  `attendance_id` int(10) NOT NULL,
+  `student_id` int(9) NOT NULL,
+  `module_id` int(9) NOT NULL,
+  `week1` varchar(3) DEFAULT NULL,
+  `week2` varchar(3) DEFAULT NULL,
+  `week3` varchar(3) DEFAULT NULL,
+  `week4` varchar(3) DEFAULT NULL,
+  `week5` varchar(3) DEFAULT NULL,
+  `week6` varchar(3) DEFAULT NULL,
+  `week7` varchar(3) DEFAULT NULL,
+  `week8` varchar(3) DEFAULT NULL,
+  `week9` varchar(3) DEFAULT NULL,
+  `week10` varchar(3) DEFAULT NULL,
+  `week11` varchar(3) DEFAULT NULL,
+  `week12` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -200,6 +214,36 @@ INSERT INTO `patmanagement` (`pat_id`, `staffId`, `Stid`, `tutorialSummary`, `me
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pdfdata`
+--
+
+CREATE TABLE `pdfdata` (
+  `pdf_id` int(11) NOT NULL,
+  `pdf_name` varchar(255) NOT NULL,
+  `week` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pdfdata`
+--
+
+INSERT INTO `pdfdata` (`pdf_id`, `pdf_name`, `week`) VALUES
+(1, '5ad34c0e135134.87085762CSY2006 C++ Lab Exercises Week 6.pdf', 'Week1'),
+(2, '5ad34c2ebd4666.04485645CSY2006_C++_Week6.pdf', 'Week2'),
+(3, '5ad34c45e1adb8.38139352CSY2006_C++_Week8.pdf', 'Week3'),
+(4, '5ad34c5ccf1973.09887421CSY2006 C++ Lab Exercises Week 8.pdf', 'Week4'),
+(5, '5ad34c8d707014.81013638CSY2006 Week 9 Lab Exercises.pdf', 'Week5'),
+(6, '5ad34cee0b9296.38863544CSY2006_C++_Week9 v1(1).pdf', 'Week6'),
+(7, '5ad34d041bd963.48425757CSY2006_C++_Week7.pdf', 'Week7'),
+(8, '5ad34d16b689a8.71508541CSY2006 C++ Lab Exercises Week 7.pdf', 'Week8'),
+(9, '5ad34d3f50b562.26122371CSY2006 C++ Lab Exercises Week 6.pdf', 'Week9'),
+(10, '5ad34d4e79d8d1.10303912CSY2006_C++_Week6.pdf', 'Week10'),
+(11, '5ad34d61cf0fd7.78034807CSY2006_C++_Week5.pdf', 'Week11'),
+(12, '5ad34d6ee14484.65670137CSY2006 Week 5 Lab Exercises.pdf', 'Week12');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `report`
 --
 
@@ -297,7 +341,7 @@ CREATE TABLE `submit` (
 
 INSERT INTO `submit` (`submission_id`, `student_id`, `file_Path`, `assignment_id`, `grade`, `staff_id`, `descrip`) VALUES
 (1, 17421492, 'submit/report.docx', 1, 'A', 4501, 'This is submission.'),
-(3, 17421492, 'submit/report.docx', 7, '', 0, 'This is report.');
+(3, 17421492, 'submit/report.docx', 7, 'A', 4503, 'This is report.');
 
 -- --------------------------------------------------------
 
@@ -344,7 +388,9 @@ ALTER TABLE `assignment`
 -- Indexes for table `attendance`
 --
 ALTER TABLE `attendance`
-  ADD PRIMARY KEY (`attendance_id`);
+  ADD PRIMARY KEY (`attendance_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `module_id` (`module_id`);
 
 --
 -- Indexes for table `concernletter`
@@ -381,6 +427,12 @@ ALTER TABLE `patmanagement`
   ADD PRIMARY KEY (`pat_id`),
   ADD KEY `staff_id` (`staffId`),
   ADD KEY `student_id` (`Stid`);
+
+--
+-- Indexes for table `pdfdata`
+--
+ALTER TABLE `pdfdata`
+  ADD PRIMARY KEY (`pdf_id`);
 
 --
 -- Indexes for table `report`
@@ -436,7 +488,7 @@ ALTER TABLE `assignment`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `attendance_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `attendance_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `concernletter`
@@ -467,6 +519,12 @@ ALTER TABLE `module`
 --
 ALTER TABLE `patmanagement`
   MODIFY `pat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pdfdata`
+--
+ALTER TABLE `pdfdata`
+  MODIFY `pdf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -507,6 +565,13 @@ ALTER TABLE `timetable`
 --
 ALTER TABLE `announcement`
   ADD CONSTRAINT `staff_announcement_id` FOREIGN KEY (`staffId`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD CONSTRAINT `module_attendance` FOREIGN KEY (`module_id`) REFERENCES `module` (`module_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_attendance` FOREIGN KEY (`student_id`) REFERENCES `student` (`Stid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `module`

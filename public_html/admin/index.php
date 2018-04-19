@@ -34,16 +34,16 @@
     <main style="width: 40%; margin: 20px auto; background: lightgrey; padding: 3% 5%; border-radius: 10px;" class="z-depth-1-half">
     		<h2 class="text-center">Woodland University College</h2>
     		<h3 class="text-center" style="font-weight: bold; margin-bottom: 20px;">Secure Admin Login System</h3>
-          <form method="POST" action="">
+          <form method="POST" action="../../template/adminloginCheck.php">
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+              <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username" name="username">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Password">
+              <input type="password" class="form-control" id="password" placeholder="Password" name="password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" name="login" class="btn btn-primary" value="Login">
           </form>
         </main>
     <!-- Main Content -->
